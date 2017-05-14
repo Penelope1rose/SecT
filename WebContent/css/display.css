@@ -1,0 +1,134 @@
+@CHARSET "ISO-8859-1";
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+@CHARSET "ISO-8859-1";
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+html, body {
+	
+    max-width: 100%;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin:0;
+    
+}
+
+ul {
+
+	top: 56.5px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 255px;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	max-width:300px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 30px;
+    text-align: left;
+    text-decoration: none;
+}
+
+li a.active {
+
+    background-color: #4CDF50;
+    color: white;
+}
+
+li a.active {
+
+    background-color: #4CDF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+li a:active:not(.active) {
+    background-color: #3A7A45;
+    color: white;
+}
+
+ul {
+    border: 1px solid #D3D3D3;
+}
+
+li {
+	text-align: left;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+h1{
+	font-family: 'Revalia', cursive;;
+	font-style: bold;
+	color: green;
+	position:relative;
+	left: 2.5em;
+	top: 2px;
+	font-size: 26px;
+	padding: 10px;
+	
+}
+h2{
+	font-family: 'Revalia', cursive;;
+	font-style: bold;
+	color: green;
+	position:relative;
+	left: -100px;
+	top: -100px;
+	font-size: 45px;
+	padding: 10px;
+}
+.box{
+  position: absolute;
+  z-index: 1;
+  width: 240px;
+  margin: 0 auto 100px;
+  top:-103px;
+  left:83px;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Revalia', cursive;;
+  font-style: bold;
+  font-size: 50px;
+  color:red;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.code{
+	position:relative;
+	left:700px;
+	top:100px;
+	margin:0;
+}
+
+#navbar {   
+	background-color: #f1f1f1;
+    text-align:left;
+    font-size: 34.7px;
+    position: relative;
+    border-bottom: 1px solid #D3D3D3;
+    height:57px;
+    margin-top:-22px;
+}
+img {
+    position: relative;
+    left: -10px;
+    top: -2.7em;
+}
