@@ -111,6 +111,22 @@ h2{
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.box2{
+  position: absolute;
+  z-index: 1;
+  width: 340px;
+  margin: 0 auto 100px;
+  top: 10px;
+  left: 220px;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Revalia', cursive;;
+  font-style: bold;
+  font-size: 50px;
+  color: red;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .code{
 	position:relative;
 	left:700px;
