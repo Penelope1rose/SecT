@@ -1,8 +1,7 @@
 @CHARSET "ISO-8859-1";
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-@CHARSET "ISO-8859-1";
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 
 html, body {
 	
@@ -10,8 +9,7 @@ html, body {
     max-height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
-    margin:0;
-    
+    margin:0;  
 }
 
 ul {
@@ -85,7 +83,7 @@ h1{
 	padding: 10px;
 	
 }
-h2{
+h2, h3{
 	font-family: 'Revalia', cursive;;
 	font-style: bold;
 	color: green;
@@ -98,38 +96,37 @@ h2{
 .box{
   position: absolute;
   z-index: 1;
-  width: 240px;
+  width: 6em;
   margin: 0 auto 100px;
-  top:-103px;
+  top:-100px;
   left:83px;
-  padding: 10px;
+  padding: 7px;
   text-align: center;
   font-family: 'Revalia', cursive;;
   font-style: bold;
-  font-size: 50px;
+  font-size: 48px;
+  color:red;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.box1{
+  position: absolute;
+  z-index: 1;
+  width: 9.6em;
+  margin: 0 auto 100px;
+  top:20px;
+  left:240px;
+  padding: 7px;
+  text-align: center;
+  font-family: 'Revalia', cursive;;
+  font-style: bold;
+  font-size: 48px;
   color:red;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.box2{
-  position: absolute;
-  z-index: 1;
-  width: 340px;
-  margin: 0 auto 100px;
-  top: 10px;
-  left: 220px;
-  padding: 10px;
-  text-align: center;
-  font-family: 'Revalia', cursive;;
-  font-style: bold;
-  font-size: 50px;
-  color: red;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-
-.code{
+.ssid{
 	position:relative;
-	left:700px;
+	left:570px;
 	top:100px;
 	margin:0;
 }
@@ -145,6 +142,39 @@ h2{
 }
 img {
     position: relative;
-    left: 7px;
-    top: -68px;
+    left: 5px;
+    top: -2.2em;
+}
+#user{position: relative;
+    left: 36.2em;
+    top: -0.2em;
+    }
+#navwords{
+ position: relative;
+ top: -4.90em;
+ left:63em;
+ font-size: 20px; 
+ padding: 0em;
+}
+.R1 {position: relative;
+
+    left: 24em;
+    top: 2em;
+    padding-right: 4em;
+    margin: 4em;
+}
+.R2 {position: relative;
+
+    left: 24em;
+    top: -0.1em;
+    padding-right: 4em;
+    margin: 4em;
+}
+.R3 {position: relative;
+
+    left: 24em;
+    top: -1.5em;
+    padding-right: 4em;
+    margin: 4em;
+    color: white;
 }
