@@ -1,19 +1,5 @@
-@CHARSET "ISO-8859-1";
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-
-
-html, body {
-	
-    max-width: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    margin:0;  
-}
-
 ul {
-
+	position: absolute;
 	top: 56.5px;
     list-style-type: none;
     margin: 0;
@@ -25,9 +11,9 @@ ul {
     padding: 0;
 	max-width:300px;
     background-color: #f1f1f1;
-    position: fixed;
     height: 100%;
     overflow: auto;
+    border: 1px solid #D3D3D3;
 }
 
 li a {
@@ -59,10 +45,6 @@ li a:active:not(.active) {
     color: white;
 }
 
-ul {
-    border: 1px solid #D3D3D3;
-}
-
 li {
 	text-align: left;
     border-bottom: 1px solid #D3D3D3;
@@ -73,14 +55,12 @@ li:last-child {
 }
 
 h1{
-	font-family: 'Revalia', cursive;;
 	font-style: bold;
 	color: green;
 	position:relative;
 	left: 2.5em;
-	top: 2px;
-	font-size: 26px;
-	padding: 10px;
+	top: 15px;
+	font-size: 35px;
 	
 }
 h2, h3{
@@ -88,9 +68,9 @@ h2, h3{
 	font-style: bold;
 	color: green;
 	position:relative;
-	left: -100px;
+	left: 0px;
 	top: -100px;
-	font-size: 45px;
+	font-size: 30px;
 	padding: 10px;
 }
 .box{
@@ -99,12 +79,12 @@ h2, h3{
   width: 6em;
   margin: 0 auto 100px;
   top:-100px;
-  left:83px;
+  left:150px;
   padding: 7px;
   text-align: center;
   font-family: 'Revalia', cursive;;
   font-style: bold;
-  font-size: 48px;
+  font-size: 30px;
   color:red;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -113,13 +93,13 @@ h2, h3{
   z-index: 1;
   width: 9.6em;
   margin: 0 auto 100px;
-  top:20px;
-  left:240px;
+  top:-10px;
+  left:250px;
   padding: 7px;
   text-align: center;
   font-family: 'Revalia', cursive;;
   font-style: bold;
-  font-size: 48px;
+  font-size: 30px;
   color:red;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -129,50 +109,54 @@ h2, h3{
 	left:570px;
 	top:100px;
 	margin:0;
+	width: 200px;
 }
 
 #navbar {   
 	background-color: #f1f1f1;
-    text-align:left;
-    font-size: 34.7px;
     position: relative;
     border-bottom: 1px solid #D3D3D3;
     height:57px;
-    margin-top:-22px;
+	top: -9px;
+	left: -8px;
+}
+#logo {
+	position: absolute;
+	top: -1;
 }
 img {
     position: relative;
     left: 5px;
     top: -2.2em;
 }
-#user{position: relative;
-    left: 36.2em;
-    top: -0.2em;
-    }
-#navwords{
- position: relative;
- top: -4.90em;
- left:63em;
- font-size: 20px; 
- padding: 0em;
+#user{
+	position: absolute;
+	top: 11px;
+	left: 1100px;
 }
-.R1 {position: relative;
-
-    left: 24em;
+#navwords{
+ 	position: absolute;
+ 	top: 18px;
+ 	font-size: 20px; 
+ 	left: 1165px;
+}
+.R1 {
+	position: relative;
+    left: 18.5em;
     top: 2em;
     padding-right: 4em;
     margin: 4em;
 }
-.R2 {position: relative;
-
-    left: 24em;
+.R2 {
+	position: relative;
+    left: 18.5em;
     top: -0.1em;
     padding-right: 4em;
     margin: 4em;
 }
 .R3 {position: relative;
 
-    left: 24em;
+    left: 18.5em;
     top: -1.5em;
     padding-right: 4em;
     margin: 4em;
