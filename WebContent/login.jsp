@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>SecuredT Login</title>
-    
-    
-    
-    
-<link rel="stylesheet" href="css/login.css" type="text/css">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/login.css">
 <link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">
-
-    
-     
-    
-  </head>
-
-  <body>
-
-
-    <div class="login-page">
+<title>Secured-T Login</title>
+</head>
+<body>
+<div class="login-page">
      <h1>Secured-T</h1>
   <div class="form">
     <form class="register-form">
@@ -36,6 +27,7 @@
     </form>
   </div>
 </div>
-    
-  </body>
+
+<!-- <a href="RetrieveTimestampServlet">Click here</a> -->
+</body>
 </html>
