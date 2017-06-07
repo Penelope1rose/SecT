@@ -28,6 +28,6 @@
   </div>
 </div>
 
-<!-- <a href="RetrieveTimestampServlet">Click here</a> -->
+<a href="RetrieveTimestampServlet">Click here</a>
 </body>
 </html>
