@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="refresh" content="30"> <!-- Refresh every 30s -->
+<meta http-equiv="Refresh" content="5;url=RetrieveTimestampServlet"> <!-- Refresh and retrieve every 30s -->
 <title>Retrieving Timestamp and Comparing with Current Time</title>
 </head>
 <body>
@@ -21,13 +21,13 @@ if (retrieveTimestamp != null) {
 	for(StudentInfoDetails timestamp:retrieveTimestamp) {
 		Date timestamps = dateFormat.parse(timestamp.getTimestamp()); //convert to Date
 		long diff = currentTime.getTime()-timestamps.getTime(); //difference in time in milliseconds
-		long diffsecs = diff / 1000 % 60; //convert to seconds
-		System.out.print(dateFormat.format(date) + "\t" + timestamp.getTimestamp());
-		if (diffsecs <= 10) {
-			System.out.println("\tCorrect");
+		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds
+		out.print("Current time: " + dateFormat.format(date) + " | Timestamp: " + timestamp.getTimestamp() + " | Time difference: " + diffsecs + " seconds");
+		if (diffsecs <= 8) {
+			out.println(" => Correct");
 		}
 		else {
-			System.out.println("\tWrong");
+			out.println(" => Wrong");
 		}
 	}	
 }
