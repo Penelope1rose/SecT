@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="Refresh" content="5;url=RetrieveTimestampServlet"> <!-- Refresh and retrieve every 30s -->
+<meta http-equiv="Refresh" content="30;url=RetrieveTimestampServlet"> <!-- Refresh and retrieve every 30s -->
 <title>Retrieving Timestamp and Comparing with Current Time</title>
 </head>
 <body>
@@ -24,10 +24,10 @@ if (retrieveTimestamp != null) {
 		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds
 		out.print("Current time: " + dateFormat.format(date) + " | Timestamp: " + timestamp.getTimestamp() + " | Time difference: " + diffsecs + " seconds");
 		if (diffsecs <= 8) {
-			out.println(" => Correct");
+			out.println(" => Correct<br />");
 		}
 		else {
-			out.println(" => Wrong");
+			out.println(" => Wrong<br />");
 		}
 	}	
 }
