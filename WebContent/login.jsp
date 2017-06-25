@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/login.css">
 <link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+		
 <title>Secured-T Login</title>
 </head>
 <body>
