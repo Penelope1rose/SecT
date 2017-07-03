@@ -1,0 +1,19 @@
+#signupbar {
+	margin: auto;
+	width: 19%;	
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+.signupcontainer {
+	width: 40%;
+	margin: auto;
+}
+
+#signupnext {
+	float: right;
+}
+
+#signupprev {
+	float: left;
+}
