@@ -54,56 +54,14 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-          	<li id="moduleheader"><a href="moduleinfo.jsp">Modules&nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
           	<%
           	ArrayList<ModuleInfoDetails> retrieveModuleInfo = (ArrayList<ModuleInfoDetails>)session.getAttribute("module");
-
+			
 			if (retrieveModuleInfo != null) {
-				for(ModuleInfoDetails module:retrieveModuleInfo) {
+				for (ModuleInfoDetails module:retrieveModuleInfo) {
 		%>
-            <li><p id="modules"><%=module.getModName()%> (<%=module.getModCode()%>)</p></li>
-            <%
-				}
-			}
-            %>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li id="assheader"><p>Assessments&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></p></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Welcome</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
-          <h2 class="sub-header">Section title</h2>
+        <div class="col-sm-9 col-md-10 main">
+          <h3 class="page-header"><%=module.getModName()%> (<%=module.getModCode()%>)</h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -136,6 +94,10 @@
         </div>
       </div>
     </div>
+                <%
+				}
+			}
+            %>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

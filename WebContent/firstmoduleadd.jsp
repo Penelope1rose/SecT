@@ -25,10 +25,15 @@
 		<li class="active" id="signupnav2"><a href="#">Add modules</a></li>
 	</ul>
 	<div class="signupcontainer">
+		<div class="progress">
+		  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+		    <span class="sr-only">50% Complete (success)</span>
+		  </div>
+		</div>
 		<form action="home.jsp">
 			Module Name: <input type="text" name="modName" class="form-control" required autofocus><br>
 	        Module Code: <input type="text" name="modCode" class="form-control" required autofocus><br>
-	        <a href="index.html">Add later (login)</a>
+	        <a href="index.jsp">Add later (login)</a>
 		    <button class="btn btn-primary" id="signupnext" type="submit">Finish</button>
 		</form>
 	</div>

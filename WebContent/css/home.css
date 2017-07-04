@@ -103,3 +103,27 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+#logo {
+	height: 40px;
+	width: 40px;
+	position: relative;
+	top: -5px;
+	display: inline-block;
+}
+
+#homenav {
+	position: relative;
+	top: -7px;
+}
+
+#modules, #assheader {
+	text-align: center;
+	font-size: 13px;
+	padding: 5px;
+}
+
+#moduleheader {
+	text-align: center;
+	font-size: 15px;
+}

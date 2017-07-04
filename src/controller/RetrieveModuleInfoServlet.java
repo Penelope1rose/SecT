@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.LecturerInfoDetails;
-import model.LecturerInfoManager;
+import model.ModuleInfoDetails;
+import model.ModuleInfoManager;
 
 /**
- * Servlet implementation class InsertLecturerInfoServlet
+ * Servlet implementation class RetrieveModuleInfoServlet
  */
-@WebServlet("/InsertLecturerInfoServlet")
-public class InsertLecturerInfoServlet extends HttpServlet {
+@WebServlet("/RetrieveModuleInfoServlet")
+public class RetrieveModuleInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertLecturerInfoServlet() {
+    public RetrieveModuleInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,6 +33,17 @@ public class InsertLecturerInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String staffID = request.getParameter("staffID");
+
+		ModuleInfoManager db = new ModuleInfoManager();
+
+		ArrayList<ModuleInfoDetails> module = db.retrieveModuleInfo(staffID);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("module", module);
+			
+		response.sendRedirect("home.jsp");
+
 	}
 
 	/**
@@ -40,25 +51,6 @@ public class InsertLecturerInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String staffID = request.getParameter("staffID");
-		String staffName = request.getParameter("staffName");
-		String password = request.getParameter("password");
-		
-		LecturerInfoManager db = new LecturerInfoManager();
-		
-		ArrayList<LecturerInfoDetails> lecturer = db.retrieveLecturerID(staffID);
-		
-		for(LecturerInfoDetails lecturerinfo:lecturer) {
-			if (staffID.equalsIgnoreCase(lecturerinfo.getStaffNumber())) {
-				HttpSession session = request.getSession();
-				session.setAttribute("LECTURER_ID", "DUPLICATE");
-				
-				response.sendRedirect("signup.jsp");
-				return;
-			}
-		}
-		db.insertLecturerInfo(staffID, staffName, password);
-		response.sendRedirect("firstmoduleadd.jsp");
 	}
 
 }

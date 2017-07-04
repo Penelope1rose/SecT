@@ -51,10 +51,11 @@ public class RetrieveLecturerInfoServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("lecturer", lecturer);
 			
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("RetrieveModuleInfoServlet?staffID="+staffID);
 			return;
 		}
-		response.sendRedirect("index.html");
+		request.setAttribute("errorMessage", "Invalid Username or Password");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 
