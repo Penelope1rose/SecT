@@ -117,13 +117,18 @@ body {
 	top: -7px;
 }
 
-#modules, #assheader {
+#modules, #assessments {
 	text-align: center;
 	font-size: 13px;
 	padding: 5px;
 }
 
-#moduleheader {
+#moduleheader, #assheader {
 	text-align: center;
 	font-size: 15px;
+}
+
+#separator {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }

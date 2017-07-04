@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.ModuleInfoDetails;
-import model.ModuleInfoManager;
+import model.AssessmentInfoDetails;
+import model.AssessmentInfoManager;
 
 /**
- * Servlet implementation class RetrieveModuleInfoServlet
+ * Servlet implementation class RetrieveAssessmentInfoServlet
  */
-@WebServlet("/RetrieveModuleInfoServlet")
-public class RetrieveModuleInfoServlet extends HttpServlet {
+@WebServlet("/RetrieveAssessmentInfoServlet")
+public class RetrieveAssessmentInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveModuleInfoServlet() {
+    public RetrieveAssessmentInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +34,15 @@ public class RetrieveModuleInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String staffID = request.getParameter("staffID");
+		
+		AssessmentInfoManager db = new AssessmentInfoManager();
 
-		ModuleInfoManager db = new ModuleInfoManager();
-
-		ArrayList<ModuleInfoDetails> module = db.retrieveModuleInfo(staffID);
+		ArrayList<AssessmentInfoDetails> Assessment = db.retrieveAssessmentInfo(staffID);
 
 		HttpSession session = request.getSession();
-		session.setAttribute("module", module);
 			
-		response.sendRedirect("RetrieveAssessmentInfoServlet?staffID="+staffID);
+		session.setAttribute("assessment", Assessment);
+		response.sendRedirect("home.jsp");
 
 	}
 
@@ -51,6 +51,7 @@ public class RetrieveModuleInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 	}
 
 }

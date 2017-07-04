@@ -35,7 +35,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%><span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%>&nbsp;<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="#">Settings</a></li>
 	            <li><a href="#">Profile</a></li>
@@ -56,25 +56,35 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-          	<li id="moduleheader"><a href="moduleinfo.jsp">Modules&nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+          	<li id="moduleheader"><a href="secondmoduleadd.jsp">Modules&nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
           	<%
           	ArrayList<ModuleInfoDetails> retrieveModuleInfo = (ArrayList<ModuleInfoDetails>)session.getAttribute("module");
 
 			if (retrieveModuleInfo != null) {
 				for(ModuleInfoDetails module:retrieveModuleInfo) {
 		%>
-            <li><p id="modules"><%=module.getModName()%> (<%=module.getModCode()%>)</p></li>
+			<hr id="separator">
+            <li id="modules"><%=module.getModName()%> (<%=module.getModCode()%>)</li>
+            
             <%
 				}
 			}
             %>
           </ul>
           <ul class="nav nav-sidebar">
-            <li id="assheader"><p>Assessments&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></p></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
+            <li id="assheader"><a href="assessmentinfo.jsp">Assessments&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
+            <%
+          	ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
+
+			if (retrieveAssessmentInfo != null) {
+				for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
+		%>
+            <hr id="separator">
+            <li id="assessments"><%=assessment.getAssessmentName()%></li>
+            <%
+				}
+			}
+            %>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

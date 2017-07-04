@@ -35,7 +35,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%><span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%>&nbsp;<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="#">Settings</a></li>
 	            <li><a href="#">Profile</a></li>
@@ -55,13 +55,13 @@
     <div class="container-fluid">
       <div class="row">
           	<%
-          	ArrayList<ModuleInfoDetails> retrieveModuleInfo = (ArrayList<ModuleInfoDetails>)session.getAttribute("module");
-			
-			if (retrieveModuleInfo != null) {
-				for (ModuleInfoDetails module:retrieveModuleInfo) {
+          	ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
+
+			if (retrieveAssessmentInfo != null) {
+				for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
 		%>
         <div class="col-sm-9 col-md-10 main">
-          <h3 class="page-header"><%=module.getModName()%> (<%=module.getModCode()%>)</h3>
+          <h3 class="page-header"><%=assessment.getAssessmentName()%></h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
