@@ -17,8 +17,9 @@ public class LecturerInfoDetails {
 		this.password = password;
 	}
 
-	public LecturerInfoDetails(String staffName) {
+	public LecturerInfoDetails(String staffNumber, String staffName) {
 		super();
+		this.staffNumber = staffNumber;
 		this.staffName = staffName;
 	}
 

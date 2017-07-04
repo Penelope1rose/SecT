@@ -23,9 +23,10 @@ public class LecturerInfoManager {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+				String lecturerID = rs.getString("C_LECTURER_ID");
 				String lecturerName = rs.getString("C_LECTURER_NAME");
 
-				LecturerInfoDetails lid = new LecturerInfoDetails(lecturerName);
+				LecturerInfoDetails lid = new LecturerInfoDetails(lecturerID, lecturerName);
 				LecturerInfo.add(lid);
 			}
 			conn.close();
@@ -34,6 +35,55 @@ public class LecturerInfoManager {
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
+		}
+	}
+	
+	public static ArrayList<LecturerInfoDetails> retrieveLecturerID(String staffNumber) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "SELECT * FROM T_LECTURER_INFO WHERE C_LECTURER_ID=?";
+			
+			ArrayList<LecturerInfoDetails> LecturerInfo = new ArrayList<LecturerInfoDetails>();
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, staffNumber);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String lecturerID = rs.getString("C_LECTURER_ID");
+				String lecturerName = rs.getString("C_LECTURER_NAME");
+
+				LecturerInfoDetails lid = new LecturerInfoDetails(lecturerID, lecturerName);
+				LecturerInfo.add(lid);
+			}
+			conn.close();
+			return LecturerInfo; 
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+	
+	public static void insertLecturerInfo(String staffID, String staffNumber, String password) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "INSERT INTO T_LECTURER_INFO(C_LECTURER_ID, C_LECTURER_NAME, C_PASSWORD) VALUES (?,?,?)";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, staffID);
+			pstmt.setString(2, staffNumber);
+			pstmt.setString(3, password);
+			
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 }

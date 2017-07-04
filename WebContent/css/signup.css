@@ -2,7 +2,7 @@
 	margin: auto;
 	width: 19%;	
 	padding-top: 50px;
-	padding-bottom: 20px;
+	padding-bottom: 50px;
 }
 
 .signupcontainer {
@@ -12,8 +12,4 @@
 
 #signupnext {
 	float: right;
-}
-
-#signupprev {
-	float: left;
 }
