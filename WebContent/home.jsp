@@ -18,6 +18,12 @@
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
+	<%
+		if(session.getAttribute("LOGIN") != "TRUE") {
+			response.sendRedirect("index.jsp");
+		}
+	%> 
+		
   </head>
 
   <body>
@@ -72,7 +78,7 @@
             %>
           </ul>
           <ul class="nav nav-sidebar">
-            <li id="assheader"><a href="assessmentinfo.jsp">Assessments&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
+            <li id="assheader"><a href="assessmentinfo.jsp">Upcoming Assessments&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
             <%
           	ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 

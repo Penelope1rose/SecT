@@ -46,14 +46,17 @@ public class RetrieveLecturerInfoServlet extends HttpServlet {
 		LecturerInfoManager db = new LecturerInfoManager();
 
 		ArrayList<LecturerInfoDetails> lecturer = db.retrieveLecturerInfo(staffID, password);
+		
+		HttpSession session = request.getSession();
 
 		for(LecturerInfoDetails lecturerinfo:lecturer) {
-			HttpSession session = request.getSession();
 			session.setAttribute("lecturer", lecturer);
+			session.setAttribute("LOGIN", "TRUE");
 			
 			response.sendRedirect("RetrieveModuleInfoServlet?staffID="+staffID);
 			return;
 		}
+		session.setAttribute("LOGIN", "FALSE");
 		request.setAttribute("errorMessage", "Invalid Username or Password");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		

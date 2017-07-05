@@ -125,10 +125,15 @@ body {
 
 #moduleheader, #assheader {
 	text-align: center;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 #separator {
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+#edit {
+	float: right;
+	font-size: 20px;
 }

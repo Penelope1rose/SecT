@@ -14,16 +14,16 @@ import model.AssessmentInfoDetails;
 import model.AssessmentInfoManager;
 
 /**
- * Servlet implementation class RetrieveAssessmentInfoServlet
+ * Servlet implementation class RetrieveAllAssessmentInfoServlet
  */
-@WebServlet("/RetrieveAssessmentInfoServlet")
-public class RetrieveAssessmentInfoServlet extends HttpServlet {
+@WebServlet("/RetrieveAllAssessmentInfoServlet")
+public class RetrieveAllAssessmentInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveAssessmentInfoServlet() {
+    public RetrieveAllAssessmentInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,13 +37,12 @@ public class RetrieveAssessmentInfoServlet extends HttpServlet {
 		
 		AssessmentInfoManager db = new AssessmentInfoManager();
 
-		ArrayList<AssessmentInfoDetails> Assessment = db.retrieveAssessmentInfo(staffID);
+		ArrayList<AssessmentInfoDetails> Assessments = db.retrieveAllAssessmentInfo(staffID);
 
 		HttpSession session = request.getSession();
 			
-		session.setAttribute("assessment", Assessment);
-		response.sendRedirect("home.jsp");
-
+		session.setAttribute("assessments", Assessments);
+		response.sendRedirect("allassessmentinfo.jsp");
 	}
 
 	/**

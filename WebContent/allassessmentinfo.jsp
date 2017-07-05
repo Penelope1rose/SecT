@@ -61,14 +61,13 @@
     <div class="container-fluid">
       <div class="row">
           	<%
-          	ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
+          	ArrayList<AssessmentInfoDetails> retrieveAllAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessments");
 
-			if (retrieveAssessmentInfo != null) {
-				for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
+			if (retrieveAllAssessmentInfo != null) {
+				for(AssessmentInfoDetails assessment:retrieveAllAssessmentInfo) {
 		%>
         <div class="main">
-        <a href="RetrieveAllAssessmentInfoServlet?staffID=<%=assessment.getLecturerID()%>">Show all</a>
-          <h3 class="page-header"><%=assessment.getAssessmentName()%><span class="glyphicon glyphicon-pencil" id="edit" aria-hidden="true"></span></h3>
+          <h3 class="page-header"><%=assessment.getAssessmentName()%></h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
