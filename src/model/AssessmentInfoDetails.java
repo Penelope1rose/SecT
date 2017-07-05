@@ -1,6 +1,7 @@
 package model;
 
 public class AssessmentInfoDetails {
+	private int id;
 	private String moduleCode;
 	private String moduleName;
 	private String lecturerID;
@@ -14,9 +15,10 @@ public class AssessmentInfoDetails {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AssessmentInfoDetails(String moduleCode, String moduleName, String lecturerID, String assessmentName, int period, String datetime,
+	public AssessmentInfoDetails(int id, String moduleCode, String moduleName, String lecturerID, String assessmentName, int period, String datetime,
 			String examCode) {
 		super();
+		this.id = id;
 		this.moduleCode = moduleCode;
 		this.moduleName = moduleName;
 		this.lecturerID = lecturerID;
@@ -26,10 +28,23 @@ public class AssessmentInfoDetails {
 		this.examCode = examCode;
 	}
 
-	public AssessmentInfoDetails(String moduleCode, String moduleName, String assessmentName, int period, String datetime, String examCode) {
+	public AssessmentInfoDetails(int id, String moduleCode, String moduleName, String assessmentName, int period, String datetime, String examCode) {
+		super();
+		this.id = id;
+		this.moduleCode = moduleCode;
+		this.moduleName = moduleName;
+		this.assessmentName = assessmentName;
+		this.period = period;
+		this.datetime = datetime;
+		this.examCode = examCode;
+	}
+
+	public AssessmentInfoDetails(String moduleCode, String moduleName, String lecturerID, String assessmentName,
+			int period, String datetime, String examCode) {
 		super();
 		this.moduleCode = moduleCode;
 		this.moduleName = moduleName;
+		this.lecturerID = lecturerID;
 		this.assessmentName = assessmentName;
 		this.period = period;
 		this.datetime = datetime;
@@ -90,6 +105,14 @@ public class AssessmentInfoDetails {
 
 	public void setAssessmentName(String assessmentName) {
 		this.assessmentName = assessmentName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

@@ -12,7 +12,7 @@ public class AssessmentInfoManager {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_LECTURER_ID=? AND C_DATETIME >= CURDATE()";
+			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_LECTURER_ID=? AND C_DATETIME >= NOW()";
 			
 			ArrayList<AssessmentInfoDetails> Assessment = new ArrayList<AssessmentInfoDetails>();
 
@@ -22,6 +22,7 @@ public class AssessmentInfoManager {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+				int id = rs.getInt("C_ID");
 				String moduleCode = rs.getString("C_MODULE_CODE");
 				String moduleName = rs.getString("C_MODULE_NAME");
 				String lecturerID = rs.getString("C_LECTURER_ID");
@@ -30,7 +31,7 @@ public class AssessmentInfoManager {
 				String datetime = rs.getString("C_DATETIME");
 				String examCode = rs.getString("C_EXAM_CODE");
 
-				AssessmentInfoDetails aid = new AssessmentInfoDetails(moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode);
+				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode);
 				Assessment.add(aid);
 			}
 			conn.close();
@@ -46,7 +47,7 @@ public class AssessmentInfoManager {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_LECTURER_ID=?";
+			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_LECTURER_ID=? ORDER BY C_DATETIME DESC";
 			
 			ArrayList<AssessmentInfoDetails> Assessment = new ArrayList<AssessmentInfoDetails>();
 
@@ -56,6 +57,7 @@ public class AssessmentInfoManager {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+				int id = rs.getInt("C_ID");
 				String moduleCode = rs.getString("C_MODULE_CODE");
 				String moduleName = rs.getString("C_MODULE_NAME");
 				String assessmentName = rs.getString("C_ASSESSMENT_NAME");
@@ -63,7 +65,7 @@ public class AssessmentInfoManager {
 				String datetime = rs.getString("C_DATETIME");
 				String examCode = rs.getString("C_EXAM_CODE");
 
-				AssessmentInfoDetails aid = new AssessmentInfoDetails(moduleCode, moduleName, assessmentName, period, datetime, examCode);
+				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, assessmentName, period, datetime, examCode);
 				Assessment.add(aid);
 			}
 			conn.close();
@@ -72,6 +74,48 @@ public class AssessmentInfoManager {
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
+		}
+	}
+	
+	public static void deleteAssessmentInfo(int hiddenID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "DELETE FROM T_ASSESSMENT WHERE C_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hiddenID);
+			
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void insertAssessmentInfo(String modCode, String modName, String staffID, String assessmentName, int period, String datetime, String examCode) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "INSERT INTO T_ASSESSMENT(C_MODULE_CODE, C_MODULE_NAME, C_LECTURER_ID, C_ASSESSMENT_NAME, C_PERIOD, C_DATETIME, C_EXAM_CODE) WHERE VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, modCode);
+			pstmt.setString(2, modName);
+			pstmt.setString(3, staffID);
+			pstmt.setString(4, assessmentName);
+			pstmt.setInt(5, period);
+			pstmt.setString(6, datetime);
+			pstmt.setString(7, examCode);
+			
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 

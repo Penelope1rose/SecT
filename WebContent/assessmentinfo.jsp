@@ -52,23 +52,40 @@
         </div>
       </div>
     </nav>
-    
-    <%
-		}
-	}
-    %>
 
     <div class="container-fluid">
       <div class="row">
+      <h2 id="assessmentheader">Upcoming Assessments
+	      <a title="List all assessments" href="RetrieveAllAssessmentInfoServlet?staffID=<%=lecturer.getStaffNumber()%>">
+	      	<span class="glyphicon glyphicon-list-alt" id="listall" aria-hidden="true"></span>
+	      </a>
+      </h2>
+      <form action="secondmoduleadd.jsp">
+      <button class="btn btn-default" id="add">
+			<span class="glyphicon glyphicon-plus" id="addbox" aria-hidden="true"> Add Assessment</span>
+	  </button>
+	  </form>
+          <%
+		}
+	}
+    %>
           	<%
           	ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 
 			if (retrieveAssessmentInfo != null) {
 				for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
+					String datetime = assessment.getDatetime().replace(".0", "");
 		%>
         <div class="main">
-        <a href="RetrieveAllAssessmentInfoServlet?staffID=<%=assessment.getLecturerID()%>">Show all</a>
-          <h3 class="page-header"><%=assessment.getAssessmentName()%><span class="glyphicon glyphicon-pencil" id="edit" aria-hidden="true"></span></h3>
+          <h3 class="page-header"><%=assessment.getAssessmentName()%>
+			<form action="DeleteAssessmentInfoServlet" method="get" id="delete">
+			<input type="hidden" name="staffID" value="<%=assessment.getLecturerID()%>">
+			<input type="hidden" name="hiddenID" value="<%=assessment.getId()%>">
+			<button class="btn btn-default" >
+			<span class="glyphicon glyphicon-minus" id="deletebox" aria-hidden="true"> Delete</span>
+			</button>
+			</form>
+		  </h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -76,9 +93,9 @@
                   <th>Module Code</th>
                   <th>Module Name</th>
                   <th>Assessment Name</th>
-                  <th>Length of Assessment</th>
-                  <th>Date and Time of Assessment</th>
-                  <th>Code for Assessment</th>
+                  <th>Time Limit (minutes)</th>
+                  <th>Date and Time</th>
+                  <th>Code</th>
                 </tr>
               </thead>
               <tbody>
@@ -87,7 +104,9 @@
                   <td><%=assessment.getModuleName()%></td>
                   <td><%=assessment.getAssessmentName()%></td>
                   <td><%=assessment.getPeriod()%></td>
-                  <td><%=assessment.getDatetime()%></td>
+                  <%
+                  	out.print("<td>" + datetime + "</td>");
+                  %>
                   <td><%=assessment.getExamCode()%></td>
                 </tr>
               </tbody>

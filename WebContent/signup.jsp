@@ -20,8 +20,8 @@
 <body>
 
 	<ul class="nav nav-pills" id="signupbar">
-		<li class="active" id="signupnav"><a href="#">Create Account</a></li>
-		<li id="signupnav2"><a href="#">Add modules</a></li>
+		<li class="active"><a href="#">Create Account</a></li>
+		<li><a href="#">Add modules</a></li>
 	</ul>
 
 	<div class="signupcontainer">

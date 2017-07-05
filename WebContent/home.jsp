@@ -78,7 +78,7 @@
             %>
           </ul>
           <ul class="nav nav-sidebar">
-            <li id="assheader"><a href="assessmentinfo.jsp">Upcoming Assessments&nbsp;<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
+            <li id="assheader"><a href="assessmentinfo.jsp">Upcoming Assessments&nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></li>
             <%
           	ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 

@@ -60,11 +60,13 @@
 
     <div class="container-fluid">
       <div class="row">
+      	<h2 id="allassheader">All Assessments</h2>
           	<%
           	ArrayList<AssessmentInfoDetails> retrieveAllAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessments");
 
 			if (retrieveAllAssessmentInfo != null) {
 				for(AssessmentInfoDetails assessment:retrieveAllAssessmentInfo) {
+					String datetime = assessment.getDatetime().replace(".0", "");
 		%>
         <div class="main">
           <h3 class="page-header"><%=assessment.getAssessmentName()%></h3>
@@ -75,9 +77,9 @@
                   <th>Module Code</th>
                   <th>Module Name</th>
                   <th>Assessment Name</th>
-                  <th>Length of Assessment</th>
-                  <th>Date and Time of Assessment</th>
-                  <th>Code for Assessment</th>
+                  <th>Time Limit (minutes)</th>
+                  <th>Date and Time</th>
+                  <th>Code</th>
                 </tr>
               </thead>
               <tbody>
@@ -86,7 +88,9 @@
                   <td><%=assessment.getModuleName()%></td>
                   <td><%=assessment.getAssessmentName()%></td>
                   <td><%=assessment.getPeriod()%></td>
-                  <td><%=assessment.getDatetime()%></td>
+                  <%
+                  	out.print("<td>" + datetime + "</td>");
+                  %>
                   <td><%=assessment.getExamCode()%></td>
                 </tr>
               </tbody>
