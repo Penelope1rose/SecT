@@ -7,9 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
     <title>Secured-T</title>
+    
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/bootstrap-datetimepicker.min.css" />
 
     <!-- Custom styles for this template -->
     <link href="css/home.css" rel="stylesheet">
@@ -55,17 +59,42 @@
     <div class="addcontainer">
     <h2 id="addassessmentheader">Add Assessment</h2>
     	<form onsubmit="return checkvalue()" action="InsertLecturerInfoServlet" method="post" class="form-signin">
-	        Admission number: <input type="text" name="staffID" id="staffID" class="form-control" placeholder="E.g. S1234567" required autofocus><br>
-	        Name: <input type="text" name="staffName" class="form-control" required autofocus><br>
-	        Password: <input type="password" name="password" id="password" class="form-control" required autofocus><br>
-	        Confirm Password: <input type="password" id="password2" class="form-control" required autofocus><br>
-	        <button class="btn btn-primary" id="signupnext" type="submit">Next</button>
+	        Module Code: <input type="text" name="modCode" class="form-control" placeholder="E.g. ST1234" required autofocus><br>
+	        Module Name: <input type="text" name="modName" class="form-control" required autofocus><br>
+	        Assessment Name: <input type="text" name="assessmentName" class="form-control" required autofocus><br>
+	        Time Limit (minutes): <input type="number" name="period" class="form-control" required autofocus><br>
+	        Date and Time:
+			<div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" name="datetime"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+            </div><br>
+            Exam Code: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="The code to access the assessment"></span>
+            <input type="text" name="examCode" class="form-control" required autofocus><br>
+	        <button class="btn btn-primary" id="addass" type="submit">Submit</button>
 		</form>
+   
 	</div>
+
     <%
 		}
 	}
     %>
-
+    
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+    </script>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script type="text/javascript" src="dist/js/moment.min.js"></script>
+	<script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="dist/js/bootstrap-datetimepicker.min.js"></script>
 </body>
 </html>

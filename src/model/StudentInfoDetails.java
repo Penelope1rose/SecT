@@ -8,13 +8,15 @@ public class StudentInfoDetails {
 	private String uniqueCode;
 	private int submitDisable;
 	private int cheating;
+	private int disconnected;
+	private String examCode;
 	
 	public StudentInfoDetails() {
 		super();
 	}
-	
+
 	public StudentInfoDetails(String adminNo, String ipAddr, String portNo, String timestamp, String uniqueCode,
-			int submitDisable, int cheating) {
+			int submitDisable, int cheating, int disconnected, String examCode) {
 		super();
 		this.adminNo = adminNo;
 		this.ipAddr = ipAddr;
@@ -23,11 +25,21 @@ public class StudentInfoDetails {
 		this.uniqueCode = uniqueCode;
 		this.submitDisable = submitDisable;
 		this.cheating = cheating;
+		this.disconnected = disconnected;
+		this.examCode = examCode;
 	}
 
-	public StudentInfoDetails(String timestamp) {
+	public StudentInfoDetails(String adminNo, String ipAddr, String portNo, String timestamp, String uniqueCode,
+			int submitDisable, int cheating, int disconnected) {
 		super();
+		this.adminNo = adminNo;
+		this.ipAddr = ipAddr;
+		this.portNo = portNo;
 		this.timestamp = timestamp;
+		this.uniqueCode = uniqueCode;
+		this.submitDisable = submitDisable;
+		this.cheating = cheating;
+		this.disconnected = disconnected;
 	}
 
 	public String getAdminNo() {
@@ -84,6 +96,22 @@ public class StudentInfoDetails {
 
 	public void setCheating(int cheating) {
 		this.cheating = cheating;
+	}
+
+	public int getDisconnected() {
+		return disconnected;
+	}
+
+	public void setDisconnected(int disconnected) {
+		this.disconnected = disconnected;
+	}
+
+	public String getExamCode() {
+		return examCode;
+	}
+
+	public void setExamCode(String examCode) {
+		this.examCode = examCode;
 	}
 
 }

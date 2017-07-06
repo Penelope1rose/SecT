@@ -82,7 +82,15 @@
 			<input type="hidden" name="staffID" value="<%=assessment.getLecturerID()%>">
 			<input type="hidden" name="hiddenID" value="<%=assessment.getId()%>">
 			<button class="btn btn-default" >
-			<span class="glyphicon glyphicon-minus" id="deletebox" aria-hidden="true"> Delete</span>
+				<span class="glyphicon glyphicon-minus" id="deletebox" aria-hidden="true"> Delete</span>
+			</button>
+			</form>
+			
+			<form action="RetrieveStudentInfoServlet" method="get" id="start">
+			<input type="hidden" name="examCode" value="<%=assessment.getExamCode()%>">
+			<input type="hidden" name="hiddenID" value="<%=assessment.getId()%>">
+			<button class="btn btn-default" id="startbutton">
+				<span class="glyphicon glyphicon-copy" id="startbox" aria-hidden="true"> Start</span>
 			</button>
 			</form>
 		  </h3>

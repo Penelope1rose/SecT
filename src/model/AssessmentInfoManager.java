@@ -118,5 +118,38 @@ public class AssessmentInfoManager {
 			System.out.println(e);
 		}
 	}
+	
+	public static ArrayList<AssessmentInfoDetails> retrieveStartAssessmentInfo(String examCode) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_EXAM_CODE=? AND C_DATETIME >= NOW()";
+			
+			ArrayList<AssessmentInfoDetails> startAssessment = new ArrayList<AssessmentInfoDetails>();
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, examCode);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String moduleCode = rs.getString("C_MODULE_CODE");
+				String moduleName = rs.getString("C_MODULE_NAME");
+				String assessmentName = rs.getString("C_ASSESSMENT_NAME");
+				int period = rs.getInt("C_PERIOD");
+				String datetime = rs.getString("C_DATETIME");
+				examCode = rs.getString("C_EXAM_CODE");
+
+				AssessmentInfoDetails said = new AssessmentInfoDetails(moduleCode, moduleName, assessmentName, period, datetime, examCode);
+				startAssessment.add(said);
+			}
+			conn.close();
+			return startAssessment; 
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
 
 }

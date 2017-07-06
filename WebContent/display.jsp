@@ -1,59 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<link rel="stylesheet" href="css/display.css" type="text/css">
+<%@page import="java.sql.*,java.util.*,db.*,controller.*,model.*,java.util.Date,java.text.*,java.util.concurrent.TimeUnit"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Secured-T</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/home.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+	<%
+		if(session.getAttribute("LOGIN") != "TRUE") {
+			response.sendRedirect("index.jsp");
+		}
+	%> 
 </head>
 <body>
-<div id="navbar">
-     <h1>Secured-T</h1>
-     <img src="images/test02.png" id="logo" width="70" height="57" alt="logo"/>
-	 <img src="images/MUser.png" id="user" width="50" height="40" alt="logo"/> 
-	 <a href="login.jsp" id="navwords" style="text-decoration:none">Sign out</a>
-</div>
-<div class="ssid">
-	<h2>SSID: </h2>
-	<h3>PASSWORD: </h3>
-	<div class="box">
-		SMW16/17
-	</div>
-	<div class="box1">
-		SMWPASSWORD
-	</div>
-</div>
-<ul>
-  <li><a class="active" href="#home">Securing Microsoft Windows</a></li>
-  <li><a href="news.asp">Ethical Hacking and Defenses</a></li>
-  <li><a href="contact.asp">Computer Law Investigation</a></li>
-  <li><a href="about.asp">Computer Architecture and Operating Systems</a></li>
-</ul>
+  <%
+	ArrayList<LecturerInfoDetails> retrieveLecturerInfo = (ArrayList<LecturerInfoDetails>)session.getAttribute("lecturer");
 
-<div class="R1">
-<img  src="images/L3.png" width="70" height="55" alt="L1" hspace="15" title="P1234567"/>
-<img  src="images/L3.png" width="70" height="55" alt="L2" hspace="15" title="P2234567"/>
-<img  src="images/L3.png" width="70" height="55" alt="L3" hspace="15" title="P3234567"/>
-<img  src="images/L3.png" width="70" height="55" alt="L4" hspace="15" title="P4234567"/>
-<img  src="images/L2.png" width="70" height="55" alt="L5" hspace="15" title="P5234567"/>
-<img  src="images/L3.png" width="70" height="55" alt="L6" hspace="15" title="P6234567"/>
-</div>
-<div class="R2">
-<img  src="images/L3.png" width="110" height="95" alt="L1" hspace="15" title="P7234567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L2" hspace="15" title="P8234567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L3" hspace="15" title="P8234567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L4" hspace="15" title="P9234567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L5" hspace="15" title="P1334567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L6" hspace="15" title="P2334567"/>
-</div>
-<div class="R3">
-<img  src="images/L3.png" width="110" height="95" alt="L1" hspace="15" title="P4334567"/>
-<img  src="images/L2.png" width="110" height="95" alt="L2" hspace="15" title="P5334567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L3" hspace="15" title="P6334567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L4" hspace="15" title="P7334567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L5" hspace="15" title="P8334567"/>
-<img  src="images/L3.png" width="110" height="95" alt="L6" hspace="15" title="P9334567"/>
-</div>
+	if (retrieveLecturerInfo != null) {
+		for(LecturerInfoDetails lecturer:retrieveLecturerInfo) {
+		%>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%>&nbsp;<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Settings</a></li>
+	            <li><a href="#">Profile</a></li>
+	            <li><a href="#">Help</a></li>
+	          </ul>
+	        </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <%
+		}
+	}
+    %>
+<%
+ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
+
+if (retrieveAssessmentInfo != null) {
+	for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) { %>
+		<h2><%=assessment.getModuleName()%></h2>
+		<h2>Exam Code: <%=assessment.getExamCode()%></h2>
+<%
+	}
+}
+
+//Get Current time
+DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+Date date = new Date();
+Date currentTime = dateFormat.parse(dateFormat.format(date));
+
+ArrayList<StudentInfoDetails> retrieveStudentInfo = (ArrayList<StudentInfoDetails>)session.getAttribute("student");
+
+if (retrieveStudentInfo != null) {
+	for(StudentInfoDetails student:retrieveStudentInfo) {
+		Date timestamps = dateFormat.parse(student.getTimestamp()); //convert to Date
+		long diff = currentTime.getTime()-timestamps.getTime(); //difference in time in milliseconds
+		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds
+		out.print("Current time: " + dateFormat.format(date) + " | Timestamp: " + student.getTimestamp() + " | Time difference: " + diffsecs + " seconds");
+		if (diffsecs <= 8) {
+			out.println(" => Correct<br />");
+		}
+		else {
+			out.println(" => Wrong<br />");
+		}
+	}	
+}
+
+%>
+
 </body>
 </html>

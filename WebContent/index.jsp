@@ -29,7 +29,5 @@
   </div>
 </div>
 
-<a href="RetrieveTimestampServlet">Click here</a>
-
 </body>
 </html>

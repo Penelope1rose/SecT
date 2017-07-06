@@ -51,6 +51,17 @@ public class AssessmentInfoDetails {
 		this.examCode = examCode;
 	}
 
+	public AssessmentInfoDetails(String moduleCode, String moduleName, String assessmentName, int period,
+			String datetime, String examCode) {
+		super();
+		this.moduleCode = moduleCode;
+		this.moduleName = moduleName;
+		this.assessmentName = assessmentName;
+		this.period = period;
+		this.datetime = datetime;
+		this.examCode = examCode;
+	}
+
 	public String getModuleCode() {
 		return moduleCode;
 	}
