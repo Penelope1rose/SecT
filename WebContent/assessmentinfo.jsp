@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
     <title>Secured-T</title>
+    
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -86,7 +89,7 @@
 			</button>
 			</form>
 			
-			<form action="RetrieveStudentInfoServlet" method="get" id="start">
+			<form action="RetrieveStartAssessmentInfoServlet" method="get" id="start">
 			<input type="hidden" name="examCode" value="<%=assessment.getExamCode()%>">
 			<input type="hidden" name="hiddenID" value="<%=assessment.getId()%>">
 			<button class="btn btn-default" id="startbutton">
@@ -131,7 +134,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="dist/js/bootstrap.min.js"></script>
 </body>

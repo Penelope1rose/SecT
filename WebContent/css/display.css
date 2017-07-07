@@ -5,6 +5,8 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 
@@ -96,71 +98,30 @@ body {
 	top: -7px;
 }
 
-#modules, #assessments {
-	text-align: center;
-	font-size: 13px;
-	padding: 5px;
+#startexamheader {
+	position: relative;
+    left: 30px;
+    width: 95%;
 }
 
-#moduleheader, #assheader {
-	text-align: center;
-	font-size: 14px;
+#systemtime {
+	font-size: 20px;
+    float: right;
 }
 
-#separator {
-	margin-top: 5px;
-	margin-bottom: 5px;
+#compimg {
+	padding-right: 80px;
 }
 
-#listall {
-	float: right;
-	padding-bottom: 5px;
+#allcompimg {
+	padding: 20px;
 }
 
-#deletebox, #addbox, #startbox {
-	padding-bottom: 5px;
+#allcomp {
+	width: 110%;
 }
 
-#add {
-	float: right;
-	top: 60px;
-    right: 10px;
-    position: absolute;
+#connected, #disconnected {
+	max-width: 100%;
+	max-height: 100%;
 }
-
-#delete, #start {
-	float: right;
-    position: relative;
-}
-
-#allassheader {
-	margin: auto;
-    width: 21%;
-    padding: 10px;
-    font-weight: bold;
-}
-
-#assessmentheader {
-	margin: auto;
-    width: 32%;
-    padding: 10px;
-    font-weight: bold;
-}
-
-.addcontainer {
-	width: 40%;
-	margin: auto;
-}
-
-#addassessmentheader {
-	margin: auto;
-    width: 53%;
-    padding: 10px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-
-#addass {
-	float: right;
-}  

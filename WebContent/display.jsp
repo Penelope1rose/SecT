@@ -4,13 +4,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Secured-T</title>
 
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/home.css" rel="stylesheet">
+    <link href="css/display.css" rel="stylesheet">
     
     <!-- Favicon -->
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -54,39 +58,83 @@
 	}
     %>
 <%
-ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
-
-if (retrieveAssessmentInfo != null) {
-	for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) { %>
-		<h2><%=assessment.getModuleName()%></h2>
-		<h2>Exam Code: <%=assessment.getExamCode()%></h2>
-<%
-	}
-}
-
 //Get Current time
 DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 Date date = new Date();
 Date currentTime = dateFormat.parse(dateFormat.format(date));
 
-ArrayList<StudentInfoDetails> retrieveStudentInfo = (ArrayList<StudentInfoDetails>)session.getAttribute("student");
+ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 
+if (retrieveAssessmentInfo != null) {
+	for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) { 
+	//When student click the refresh button in browser, it goes through the servlet
+	if(session.getAttribute("REFRESH")!= null){ %>
+		<script type="text/javascript">
+	    	window.location.href = "RetrieveStartAssessmentInfoServlet?examCode=<%=assessment.getExamCode()%>"
+		</script>
+	<%
+	}
+	else{    
+		session.setAttribute("REFRESH","TRUE");
+	}
+	%>
+	<div id="startexamheader">
+		<h2><%=assessment.getModuleName()%>
+		<p id="systemtime">System Time: <%=dateFormat.format(date)%></p>
+		</h2>
+		<h2>Exam Code: <%=assessment.getExamCode()%></h2>
+	</div>
+	
+	<script type="text/javascript">
+	setTimeout(function(){
+		   window.location="RetrieveStudentInfoServlet?examCode=<%=assessment.getExamCode()%>";
+		}, 10000);
+	</script>
+<div id="allcomp">
+	<ul class="list-inline" id="allcompimg">
+<%
+	}
+}
+
+ArrayList<StudentInfoDetails> retrieveStudentInfo = (ArrayList<StudentInfoDetails>)session.getAttribute("student");
+boolean showAlert = true;
 if (retrieveStudentInfo != null) {
 	for(StudentInfoDetails student:retrieveStudentInfo) {
 		Date timestamps = dateFormat.parse(student.getTimestamp()); //convert to Date
 		long diff = currentTime.getTime()-timestamps.getTime(); //difference in time in milliseconds
 		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds
-		out.print("Current time: " + dateFormat.format(date) + " | Timestamp: " + student.getTimestamp() + " | Time difference: " + diffsecs + " seconds");
-		if (diffsecs <= 8) {
-			out.println(" => Correct<br />");
+		if (diffsecs <= 8) { %>
+			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>"></li>
+		<%
 		}
-		else {
-			out.println(" => Wrong<br />");
+		else { %>
+			<li id="compimg"><img src="images/L2.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>"></li>
+		<%
+			if (showAlert == true) { %>
+			<script type="text/javascript">
+				alert ("1 or more student(s) has/have disconnected!");
+			</script>
+			<%
+				showAlert = false;
+			}
 		}
 	}	
 }
 
 %>
+	</ul>
+</div>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="dist/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.AssessmentInfoDetails;
 import model.AssessmentInfoManager;
+import model.LecturerInfoDetails;
 
 /**
  * Servlet implementation class RetrieveStartAssessmentInfoServlet
@@ -40,9 +41,11 @@ public class RetrieveStartAssessmentInfoServlet extends HttpServlet {
 		ArrayList<AssessmentInfoDetails> startAssessment = db.retrieveStartAssessmentInfo(examCode);
 
 		HttpSession session = request.getSession();
-			
+		
+		session.removeAttribute("REFRESH");
 		session.setAttribute("assessment", startAssessment);
-		response.sendRedirect("display.jsp");
+		response.sendRedirect("RetrieveStudentInfoServlet?examCode="+examCode);
+
 	}
 
 	/**
