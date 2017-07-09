@@ -110,7 +110,8 @@ body {
 }
 
 #compimg {
-	padding-right: 80px;
+	padding-right: 45px;
+	padding-bottom: 20px;
 }
 
 #allcompimg {
@@ -124,4 +125,31 @@ body {
 #connected, #disconnected {
 	max-width: 100%;
 	max-height: 100%;
+}
+
+#removecomp {
+	visibility: hidden;
+	position: absolute;
+    margin-left: 100px;
+    margin-top: -9px;
+}
+
+#compimg:hover #removecomp{
+	visibility: visible;
+}
+
+.startsskl {
+	position: absolute;
+    margin-top: 50px;
+    margin-left: -159px;
+    font-size: 10px;
+    padding: 0;
+}
+
+.stopsskl {
+	position: absolute;
+    margin-top: 50px;
+    margin-left: -90px;
+    font-size: 10px;
+    padding: 0;
 }

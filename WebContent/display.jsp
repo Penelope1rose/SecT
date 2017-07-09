@@ -9,7 +9,8 @@
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -85,11 +86,11 @@ if (retrieveAssessmentInfo != null) {
 		<h2>Exam Code: <%=assessment.getExamCode()%></h2>
 	</div>
 	
-	<script type="text/javascript">
+<%--  	<script type="text/javascript">
 	setTimeout(function(){
 		   window.location="RetrieveStudentInfoServlet?examCode=<%=assessment.getExamCode()%>";
 		}, 10000);
-	</script>
+	</script> --%>
 <div id="allcomp">
 	<ul class="list-inline" id="allcompimg">
 <%
@@ -102,13 +103,52 @@ if (retrieveStudentInfo != null) {
 	for(StudentInfoDetails student:retrieveStudentInfo) {
 		Date timestamps = dateFormat.parse(student.getTimestamp()); //convert to Date
 		long diff = currentTime.getTime()-timestamps.getTime(); //difference in time in milliseconds
-		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds
-		if (diffsecs <= 8) { %>
+		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds%>
+		<%
+		if (/*diffsecs <= 8 && diffsecs >= 0 && */student.getDisconnected() == 0) { %>
 			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>"></li>
+		
+			<button id="startsskl<%=student.getId()%>" class="btn startsskl" onclick="startredirect(<%=student.getId()%>)" title="Start screen capture and keylogger">
+				Start
+				<span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+			</button>
+			<button id="stopsskl<%=student.getId()%>" class="btn stopsskl" onclick="stopredirect(<%=student.getId()%>)" title="Stop screen capture and keylogger" disabled>Stop</button>
+			
+			<script type="text/javascript">
+			$(document).ready(function(){
+				if (<%=student.getSskl()%> == 1) {
+				    $('#startsskl<%=student.getId()%>').prop('disabled', true);
+				    $('#stopsskl<%=student.getId()%>').prop('disabled', false);
+
+				}
+				else {
+					$('#startsskl<%=student.getId()%>').prop('disabled', false);
+				}
+
+			});
+			
+			function startredirect(id) {
+				window.location="UpdateStartSSKLStudentInfoServlet?hiddenID="+id;
+			}
+			
+			function stopredirect(id) {
+				window.location="UpdateStopSSKLStudentInfoServlet?hiddenID="+id;
+			}
+
+			</script>
 		<%
 		}
 		else { %>
-			<li id="compimg"><img src="images/L2.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>"></li>
+			<li id="compimg">
+			<form action="DeleteStudentInfoServlet" onsubmit="return confirmDelete()">
+				<input type="hidden" name="hiddenID" value="<%=student.getId()%>">
+				<button class="btn btn-link" id="removecomp"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+			</form>
+			
+			<img src="images/L2.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+			</li>
 		<%
 			if (showAlert == true) { %>
 			<script type="text/javascript">
@@ -129,6 +169,16 @@ if (retrieveStudentInfo != null) {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
+
+function confirmDelete() {
+	var result = confirm("Are you sure you want to remove this computer?");
+	if (result) {
+		$( this ).parent().remove();
+		return true;
+	}
+	return false;
+}
+
 </script>
 
     <!-- Bootstrap core JavaScript
