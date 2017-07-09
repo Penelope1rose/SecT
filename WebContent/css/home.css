@@ -163,4 +163,29 @@ body {
 
 #addass {
 	float: right;
+}
+
+.announcement {
+	font-family: Palatino;
+  	padding: 10px 15px 0px;
+  	border: 1px solid #e1e1e1;
+  	background-color: #f9f9f9;
+  	border-radius: 4px;
+}
+
+#announcement_title {
+	font-family: Palatino;
+	font-size: 2.5em;
+	letter-spacing: 0.04em;
+	margin: 0;
+  	font-weight: bold;
+  	color: #ff5252;
 }  
+
+#individual_announcement {
+	border-top: 1px solid #e5e5e5;
+}
+
+#searchbar {
+	margin-top: -40px;
+}

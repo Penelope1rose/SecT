@@ -1,25 +1,29 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.StudentInfoManager;
+import model.AnnouncementInfoDetails;
+import model.AnnouncementInfoManager;
 
 /**
- * Servlet implementation class UpdateStopSSKLStudentInfoServlet
+ * Servlet implementation class RetrieveAllAnnouncementInfoServlet
  */
-@WebServlet("/UpdateStopSSKLStudentInfoServlet")
-public class UpdateStopSSKLStudentInfoServlet extends HttpServlet {
+@WebServlet("/RetrieveAllAnnouncementInfoServlet")
+public class RetrieveAllAnnouncementInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateStopSSKLStudentInfoServlet() {
+    public RetrieveAllAnnouncementInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,13 +33,19 @@ public class UpdateStopSSKLStudentInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String hiddenID = request.getParameter("hiddenID");
 		
-		StudentInfoManager db = new StudentInfoManager();
+		String staffID = request.getParameter("staffID");
+		
+		AnnouncementInfoManager db = new AnnouncementInfoManager();
 
-		db.updateStopSSKLStudentInfo(hiddenID);
+		ArrayList<AnnouncementInfoDetails> Announcement = db.retrieveAllAnnouncement(staffID);
 
-		response.sendRedirect("display.jsp");
+		HttpSession session = request.getSession();
+		
+		session.removeAttribute("REFRESH");
+
+		session.setAttribute("announcement", Announcement);
+		response.sendRedirect("home.jsp");
 	}
 
 	/**
@@ -43,6 +53,7 @@ public class UpdateStopSSKLStudentInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 	}
 
 }

@@ -42,7 +42,7 @@ public class RetrieveAssessmentInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 			
 		session.setAttribute("assessment", Assessment);
-		response.sendRedirect("home.jsp");
+		response.sendRedirect("RetrieveAllAnnouncementInfoServlet?staffID="+staffID);
 
 	}
 
