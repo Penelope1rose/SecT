@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="java.sql.*,java.util.*,db.*,controller.*,model.*"%>
+<%@page import="java.sql.*,java.util.*,db.*,controller.*,model.*,java.util.Date,java.text.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,6 +35,16 @@
 
 	if (retrieveLecturerInfo != null) {
 		for(LecturerInfoDetails lecturer:retrieveLecturerInfo) {
+			//When lecturer click the refresh button in browser, it goes through the servlet
+			if(session.getAttribute("REFRESH")!= null){ %>
+				<script type="text/javascript">
+	            	window.location.href = "RetrieveAllAnnouncementInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"
+	        	</script>
+	        <%
+			}
+			else{    
+				session.setAttribute("REFRESH","TRUE");
+			}
 		%>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -97,63 +107,45 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Welcome</h1>
+        	<div class="announcement">
+          		<h2 id="announcement_title">Announcements</h2>
+          		     <form action="RetrieveAnnouncementInfoServlet" class="navbar-form navbar-right" id="searchbar">
+				        <div class="form-group">
+				        <%
+          	retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
+			if (retrieveAssessmentInfo != null) {
+				for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
+		%>
+				          <input type="hidden" name="staffID" value="<%=assessment.getLecturerID()%>">
+				          <%
+				}
+			}
+				          %>
+				          <input type="text" name="modCode" class="form-control" placeholder="Search by module code">
+				        </div>
+				        <button type="submit" class="btn btn-default">Enter</button>
+				      </form>
+          <%
+			  		ArrayList<AnnouncementInfoDetails> retrieveAnnouncement = (ArrayList<AnnouncementInfoDetails>)session.getAttribute("announcement");
+			  		for(AnnouncementInfoDetails announcement:retrieveAnnouncement) {
+						SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+			  		%>
+					<p id="individual_announcement">
+						<h3>Module Code: <%=announcement.getModuleCode()%></h3>
+						(<%=dateFormat.format(announcement.getTimestamp())%>)
+					</p>
+					<p>
+						<%=announcement.getAnnouncement()%>
+					</p>
 
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+			<%
+			  		}
+			%>
+
+	        </div>
+	      </div>
+	    </div>
     </div>
 
     <!-- Bootstrap core JavaScript
