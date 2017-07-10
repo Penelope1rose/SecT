@@ -79,6 +79,7 @@ if (retrieveAssessmentInfo != null) {
 		session.setAttribute("REFRESH","TRUE");
 	}
 	%>
+	<span id="message"></span>
 	<div id="startexamheader">
 		<h2><%=assessment.getModuleName()%>
 		<p id="systemtime">System Time: <%=dateFormat.format(date)%></p>
@@ -121,6 +122,8 @@ if (retrieveStudentInfo != null) {
 				if (<%=student.getSskl()%> == 1) {
 				    $('#startsskl<%=student.getId()%>').prop('disabled', true);
 				    $('#stopsskl<%=student.getId()%>').prop('disabled', false);
+				    $("#message").addClass("message<%=student.getId()%>");
+				    $(".message<%=student.getId()%>").append('<div class="alert alert-success" role="alert">Screen capture and keylogger started for <%=student.getAdminNo()%></div>')
 
 				}
 				else {
