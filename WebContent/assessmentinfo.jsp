@@ -77,11 +77,12 @@
 
 			if (retrieveAssessmentInfo != null) {
 				for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
+					if (assessment.getStarted() == 0) {
 					String datetime = assessment.getDatetime().replace(".0", "");
 		%>
         <div class="main">
           <h3 class="page-header"><%=assessment.getAssessmentName()%>
-			<form action="DeleteAssessmentInfoServlet" method="get" id="delete">
+			<form action="DeleteAssessmentInfoServlet" id="delete">
 			<input type="hidden" name="staffID" value="<%=assessment.getLecturerID()%>">
 			<input type="hidden" name="hiddenID" value="<%=assessment.getId()%>">
 			<button class="btn btn-default" >
@@ -89,9 +90,7 @@
 			</button>
 			</form>
 			
-			<form action="RetrieveStartAssessmentInfoServlet" method="get" id="start">
-			<input type="hidden" name="examCode" value="<%=assessment.getExamCode()%>">
-			<input type="hidden" name="hiddenID" value="<%=assessment.getId()%>">
+			<form id="start" onClick="window.open('RetrieveStartAssessmentInfoServlet?hiddenID=<%=assessment.getId()%>&examCode=<%=assessment.getExamCode()%>');">
 			<button class="btn btn-default" id="startbutton">
 				<span class="glyphicon glyphicon-copy" id="startbox" aria-hidden="true"> Start</span>
 			</button>
@@ -127,6 +126,7 @@
       </div>
     </div>
                 <%
+					}
 				}
 			}
             %>

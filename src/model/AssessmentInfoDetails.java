@@ -9,6 +9,7 @@ public class AssessmentInfoDetails {
 	private int period;
 	private String datetime;
 	private String examCode;
+	private int started;
 	
 	public AssessmentInfoDetails() {
 		super();
@@ -16,7 +17,7 @@ public class AssessmentInfoDetails {
 	}
 
 	public AssessmentInfoDetails(int id, String moduleCode, String moduleName, String lecturerID, String assessmentName, int period, String datetime,
-			String examCode) {
+			String examCode, int started) {
 		super();
 		this.id = id;
 		this.moduleCode = moduleCode;
@@ -26,29 +27,7 @@ public class AssessmentInfoDetails {
 		this.period = period;
 		this.datetime = datetime;
 		this.examCode = examCode;
-	}
-
-	public AssessmentInfoDetails(String moduleCode, String moduleName, String lecturerID, String assessmentName,
-			int period, String datetime, String examCode) {
-		super();
-		this.moduleCode = moduleCode;
-		this.moduleName = moduleName;
-		this.lecturerID = lecturerID;
-		this.assessmentName = assessmentName;
-		this.period = period;
-		this.datetime = datetime;
-		this.examCode = examCode;
-	}
-
-	public AssessmentInfoDetails(String moduleCode, String moduleName, String assessmentName, int period,
-			String datetime, String examCode) {
-		super();
-		this.moduleCode = moduleCode;
-		this.moduleName = moduleName;
-		this.assessmentName = assessmentName;
-		this.period = period;
-		this.datetime = datetime;
-		this.examCode = examCode;
+		this.started = started;
 	}
 
 	public String getModuleCode() {
@@ -113,6 +92,14 @@ public class AssessmentInfoDetails {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getStarted() {
+		return started;
+	}
+
+	public void setStarted(int started) {
+		this.started = started;
 	}
 
 }

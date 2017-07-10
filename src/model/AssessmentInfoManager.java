@@ -12,7 +12,7 @@ public class AssessmentInfoManager {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_LECTURER_ID=? AND C_DATETIME >= NOW()";
+			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_LECTURER_ID=? AND C_STARTED=0";
 			
 			ArrayList<AssessmentInfoDetails> Assessment = new ArrayList<AssessmentInfoDetails>();
 
@@ -30,8 +30,9 @@ public class AssessmentInfoManager {
 				int period = rs.getInt("C_PERIOD");
 				String datetime = rs.getString("C_DATETIME");
 				String examCode = rs.getString("C_EXAM_CODE");
+				int started = rs.getInt("C_STARTED");
 
-				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode);
+				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode, started);
 				Assessment.add(aid);
 			}
 			conn.close();
@@ -65,8 +66,9 @@ public class AssessmentInfoManager {
 				int period = rs.getInt("C_PERIOD");
 				String datetime = rs.getString("C_DATETIME");
 				String examCode = rs.getString("C_EXAM_CODE");
+				int started = rs.getInt("C_STARTED");
 
-				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode);
+				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode, started);
 				Assessment.add(aid);
 			}
 			conn.close();
@@ -120,28 +122,31 @@ public class AssessmentInfoManager {
 		}
 	}
 	
-	public static ArrayList<AssessmentInfoDetails> retrieveStartAssessmentInfo(String examCode) {
+	public static ArrayList<AssessmentInfoDetails> retrieveStartAssessmentInfo(String hiddenID) {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_EXAM_CODE=? AND C_DATETIME >= NOW()";
+			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_ID=? AND C_STARTED=0";
 			
 			ArrayList<AssessmentInfoDetails> startAssessment = new ArrayList<AssessmentInfoDetails>();
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, examCode);
+			pstmt.setString(1, hiddenID);
 			
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+				int id = rs.getInt("C_ID");
 				String moduleCode = rs.getString("C_MODULE_CODE");
 				String moduleName = rs.getString("C_MODULE_NAME");
+				String lecturerID = rs.getString("C_LECTURER_ID");
 				String assessmentName = rs.getString("C_ASSESSMENT_NAME");
 				int period = rs.getInt("C_PERIOD");
 				String datetime = rs.getString("C_DATETIME");
-				examCode = rs.getString("C_EXAM_CODE");
+				String examCode = rs.getString("C_EXAM_CODE");
+				int started = rs.getInt("C_STARTED");
 
-				AssessmentInfoDetails said = new AssessmentInfoDetails(moduleCode, moduleName, assessmentName, period, datetime, examCode);
+				AssessmentInfoDetails said = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode, started);
 				startAssessment.add(said);
 			}
 			conn.close();
@@ -150,6 +155,24 @@ public class AssessmentInfoManager {
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
+		}
+	}
+	
+	public static void updateAssessmentInfo(String hiddenID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "UPDATE T_ASSESSMENT SET C_STARTED=1 WHERE C_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, hiddenID);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 

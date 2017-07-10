@@ -126,20 +126,20 @@
 				   </div>
 				   <button type="submit" class="btn btn-default">Enter</button>
 				</form>
-				
-				<%
+
+				<form action="RetrieveSpecifiedAnnouncementInfoServlet" class="navbar-form navbar-right" id="addannouncement">
+			<%
 				retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 
 				if (retrieveAssessmentInfo != null) {
 					for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
-			%>
-				<form action="RetrieveSpecifiedAnnouncementInfoServlet" class="navbar-form navbar-right" id="addannouncement">
+			%>			
 					<input type="hidden" name="hiddenID" value="<%=assessment.getLecturerID()%>">
 			<%
 				}
 			}
 			%>
-          			<button class="btn btn-default">
+          			<button class="btn btn-default" id="addann">
 							<span class="glyphicon glyphicon-plus" id="addbox" aria-hidden="true"> Add Announcement</span>
 					  </button>
 				</form>

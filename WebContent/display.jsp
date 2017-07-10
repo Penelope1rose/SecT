@@ -26,51 +26,21 @@
 		}
 	%> 
 </head>
-<body>
-  <%
-	ArrayList<LecturerInfoDetails> retrieveLecturerInfo = (ArrayList<LecturerInfoDetails>)session.getAttribute("lecturer");
-
-	if (retrieveLecturerInfo != null) {
-		for(LecturerInfoDetails lecturer:retrieveLecturerInfo) {
-		%>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%>&nbsp;<span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="#">Settings</a></li>
-	            <li><a href="#">Profile</a></li>
-	            <li><a href="#">Help</a></li>
-	          </ul>
-	        </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
-    <%
-		}
-	}
-    %>
+<body class="monitoring">
 <%
 //Get Current time
 DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 Date date = new Date();
 Date currentTime = dateFormat.parse(dateFormat.format(date));
 
-ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
+ArrayList<AssessmentInfoDetails> retrieveStartAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("startassessment");
 
-if (retrieveAssessmentInfo != null) {
-	for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) { 
-	//When student click the refresh button in browser, it goes through the servlet
+if (retrieveStartAssessmentInfo != null) {
+	for(AssessmentInfoDetails assessment:retrieveStartAssessmentInfo) { 
+	//When lecturer click the refresh button in browser, it goes through the servlet
 	if(session.getAttribute("REFRESH")!= null){ %>
 		<script type="text/javascript">
-	    	window.location.href = "RetrieveStartAssessmentInfoServlet?examCode=<%=assessment.getExamCode()%>"
+	    	window.location.href = "RetrieveStartAssessmentInfoServlet?hiddenID=<%=assessment.getId()%>&examCode=<%=assessment.getExamCode()%>";
 		</script>
 	<%
 	}
@@ -105,7 +75,7 @@ if (retrieveStudentInfo != null) {
 		long diff = currentTime.getTime()-timestamps.getTime(); //difference in time in milliseconds
 		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds%>
 		<%
-		if (/*diffsecs <= 8 && diffsecs >= 0 && */student.getDisconnected() == 0) { %>
+		if (diffsecs <= 8 && diffsecs >= 0 && student.getDisconnected() == 0) { %>
 			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>"></li>
 		
 			<button id="startsskl<%=student.getId()%>" class="btn startsskl" onclick="startredirect(<%=student.getId()%>)" title="Start screen capture and keylogger">
@@ -166,6 +136,26 @@ if (retrieveStudentInfo != null) {
 %>
 	</ul>
 </div>
+<%
+retrieveStartAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("startassessment");
+
+if (retrieveStartAssessmentInfo != null) {
+	for(AssessmentInfoDetails assessment:retrieveStartAssessmentInfo) { 
+
+%>
+<script type="text/javascript">
+	function refreshParent() {
+	    window.opener.location.href = "UpdateAssessmentInfoServlet?hiddenID=<%=assessment.getId()%>&staffID=<%=assessment.getLecturerID()%>";
+	    window.close();
+	}
+</script>
+<%
+	}
+}
+%>
+<form id="endass">
+	<button class="btn btn-default" onclick="refreshParent()"> End Assessment</button>
+</form>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -179,8 +169,7 @@ function confirmDelete() {
 		return true;
 	}
 	return false;
-}
-
+}    
 </script>
 
     <!-- Bootstrap core JavaScript
