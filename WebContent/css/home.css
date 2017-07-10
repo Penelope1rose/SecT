@@ -161,7 +161,7 @@ body {
     margin-top: 5px;
 }
 
-#addass {
+#addass, #addann {
 	float: right;
 }
 
@@ -186,6 +186,19 @@ body {
 	border-top: 1px solid #e5e5e5;
 }
 
-#searchbar {
+#searchbar, #addannouncement {
 	margin-top: -40px;
+}
+
+#addannouncement {
+	padding-right: 0;
+}
+
+#addannouncementheader {
+	margin: auto;
+    width: 63%;
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }

@@ -109,8 +109,8 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	<div class="announcement">
           		<h2 id="announcement_title">Announcements</h2>
-          		     <form action="RetrieveAnnouncementInfoServlet" class="navbar-form navbar-right" id="searchbar">
-				        <div class="form-group">
+          		<form action="RetrieveAnnouncementInfoServlet" class="navbar-form navbar-right" id="searchbar">
+				    <div class="form-group">
 				        <%
           	retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 
@@ -123,9 +123,27 @@
 			}
 				          %>
 				          <input type="text" name="modCode" class="form-control" placeholder="Search by module code">
-				        </div>
-				        <button type="submit" class="btn btn-default">Enter</button>
-				      </form>
+				   </div>
+				   <button type="submit" class="btn btn-default">Enter</button>
+				</form>
+				
+				<%
+				retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
+
+				if (retrieveAssessmentInfo != null) {
+					for(AssessmentInfoDetails assessment:retrieveAssessmentInfo) {
+			%>
+				<form action="RetrieveSpecifiedAnnouncementInfoServlet" class="navbar-form navbar-right" id="addannouncement">
+					<input type="hidden" name="hiddenID" value="<%=assessment.getLecturerID()%>">
+			<%
+				}
+			}
+			%>
+          			<button class="btn btn-default">
+							<span class="glyphicon glyphicon-plus" id="addbox" aria-hidden="true"> Add Announcement</span>
+					  </button>
+				</form>
+
           <%
 			  		ArrayList<AnnouncementInfoDetails> retrieveAnnouncement = (ArrayList<AnnouncementInfoDetails>)session.getAttribute("announcement");
 			  		for(AnnouncementInfoDetails announcement:retrieveAnnouncement) {

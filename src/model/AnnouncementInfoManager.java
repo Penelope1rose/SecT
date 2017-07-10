@@ -76,4 +76,26 @@ public class AnnouncementInfoManager{
 		}
 	}
 	
+	public static void insertAnnouncementInfo(String modCode, String staffID, String staffName, String announcement) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "INSERT INTO T_ANNOUNCEMENT(C_MODULE_CODE, C_LECTURER_ID, C_LECTURER_NAME, C_ANNOUNCEMENT, C_TIMESTAMP, C_EXAM_CODE) VALUES (?, ?, ?, ?, now(), (SELECT C_EXAM_CODE FROM T_ASSESSMENT WHERE C_MODULE_CODE=?))";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, modCode);
+			pstmt.setString(2, staffID);
+			pstmt.setString(3, staffName);
+			pstmt.setString(4, announcement);
+			pstmt.setString(5, modCode);
+
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 }

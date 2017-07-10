@@ -60,12 +60,13 @@ public class AssessmentInfoManager {
 				int id = rs.getInt("C_ID");
 				String moduleCode = rs.getString("C_MODULE_CODE");
 				String moduleName = rs.getString("C_MODULE_NAME");
+				String lecturerID = rs.getString("C_LECTURER_ID");
 				String assessmentName = rs.getString("C_ASSESSMENT_NAME");
 				int period = rs.getInt("C_PERIOD");
 				String datetime = rs.getString("C_DATETIME");
 				String examCode = rs.getString("C_EXAM_CODE");
 
-				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, assessmentName, period, datetime, examCode);
+				AssessmentInfoDetails aid = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode);
 				Assessment.add(aid);
 			}
 			conn.close();
@@ -99,7 +100,7 @@ public class AssessmentInfoManager {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "INSERT INTO T_ASSESSMENT(C_MODULE_CODE, C_MODULE_NAME, C_LECTURER_ID, C_ASSESSMENT_NAME, C_PERIOD, C_DATETIME, C_EXAM_CODE) WHERE VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO T_ASSESSMENT(C_MODULE_CODE, C_MODULE_NAME, C_LECTURER_ID, C_ASSESSMENT_NAME, C_PERIOD, C_DATETIME, C_EXAM_CODE) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, modCode);

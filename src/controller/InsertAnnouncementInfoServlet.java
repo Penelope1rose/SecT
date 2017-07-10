@@ -1,26 +1,25 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AssessmentInfoManager;
+import model.AnnouncementInfoManager;
 
 /**
- * Servlet implementation class InsertAssessmentInfoServlet
+ * Servlet implementation class InsertAnnouncementInfoServlet
  */
-@WebServlet("/InsertAssessmentInfoServlet")
-public class InsertAssessmentInfoServlet extends HttpServlet {
+@WebServlet("/InsertAnnouncementInfoServlet")
+public class InsertAnnouncementInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertAssessmentInfoServlet() {
+    public InsertAnnouncementInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,18 +30,15 @@ public class InsertAssessmentInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String modCode = request.getParameter("modCode");
-		String modName = request.getParameter("modName");
 		String staffID = request.getParameter("staffID");
-		String assessmentName = request.getParameter("assessmentName");
-		int period = Integer.parseInt(request.getParameter("period"));
-		String datetime = request.getParameter("datetime");
-		String examCode = request.getParameter("examCode");
+		String staffName = request.getParameter("staffName");
+		String announcement = request.getParameter("announcement");
 		
-		AssessmentInfoManager db = new AssessmentInfoManager();
+		AnnouncementInfoManager db = new AnnouncementInfoManager();
 
-		db.insertAssessmentInfo(modCode, modName, staffID, assessmentName, period, datetime, examCode);
+		db.insertAnnouncementInfo(modCode, staffID, staffName, announcement);
 
-		response.sendRedirect("RetrieveUpdateAssessmentInfoServlet?staffID="+staffID);
+		response.sendRedirect("RetrieveAllAnnouncementInfoServlet?staffID="+staffID);
 	}
 
 	/**

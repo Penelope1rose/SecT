@@ -28,17 +28,6 @@ public class AssessmentInfoDetails {
 		this.examCode = examCode;
 	}
 
-	public AssessmentInfoDetails(int id, String moduleCode, String moduleName, String assessmentName, int period, String datetime, String examCode) {
-		super();
-		this.id = id;
-		this.moduleCode = moduleCode;
-		this.moduleName = moduleName;
-		this.assessmentName = assessmentName;
-		this.period = period;
-		this.datetime = datetime;
-		this.examCode = examCode;
-	}
-
 	public AssessmentInfoDetails(String moduleCode, String moduleName, String lecturerID, String assessmentName,
 			int period, String datetime, String examCode) {
 		super();
