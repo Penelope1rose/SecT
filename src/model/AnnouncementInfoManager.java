@@ -28,9 +28,9 @@ public class AnnouncementInfoManager{
 				String lecturerName = rs.getString("C_LECTURER_NAME");
 				String announcement = rs.getString("C_ANNOUNCEMENT");
 				Timestamp timestamp = rs.getTimestamp("C_TIMESTAMP");
-				String examCode = rs.getString("C_EXAM_CODE");
+				int assessmentId = rs.getInt("C_ASSESSMENT_ID");
 
-				AnnouncementInfoDetails ad = new AnnouncementInfoDetails(moduleCode, lecturerId, lecturerName, announcement, timestamp, examCode);
+				AnnouncementInfoDetails ad = new AnnouncementInfoDetails(moduleCode, lecturerId, lecturerName, announcement, timestamp, assessmentId);
 				Announcement.add(ad);
 			}
 			conn.close();
@@ -62,9 +62,9 @@ public class AnnouncementInfoManager{
 				String lecturerName = rs.getString("C_LECTURER_NAME");
 				String announcement = rs.getString("C_ANNOUNCEMENT");
 				Timestamp timestamp = rs.getTimestamp("C_TIMESTAMP");
-				String examCode = rs.getString("C_EXAM_CODE");
+				int assessmentId = rs.getInt("C_ASSESSMENT_ID");
 
-				AnnouncementInfoDetails ad = new AnnouncementInfoDetails(moduleCode, lecturerId, lecturerName, announcement, timestamp, examCode);
+				AnnouncementInfoDetails ad = new AnnouncementInfoDetails(moduleCode, lecturerId, lecturerName, announcement, timestamp, assessmentId);
 				Announcement.add(ad);
 			}
 			conn.close();
@@ -80,7 +80,7 @@ public class AnnouncementInfoManager{
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "INSERT INTO T_ANNOUNCEMENT(C_MODULE_CODE, C_LECTURER_ID, C_LECTURER_NAME, C_ANNOUNCEMENT, C_TIMESTAMP, C_EXAM_CODE) VALUES (?, ?, ?, ?, now(), (SELECT C_EXAM_CODE FROM T_ASSESSMENT WHERE C_MODULE_CODE=?))";
+			String sql = "INSERT INTO T_ANNOUNCEMENT(C_MODULE_CODE, C_LECTURER_ID, C_LECTURER_NAME, C_ANNOUNCEMENT, C_TIMESTAMP, C_EXAM_CODE) VALUES (?, ?, ?, ?, now(), (SELECT C_ID FROM T_ASSESSMENT WHERE C_MODULE_CODE=? AND C_STARTED=0))";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, modCode);

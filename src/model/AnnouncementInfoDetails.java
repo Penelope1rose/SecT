@@ -8,7 +8,7 @@ public class AnnouncementInfoDetails {
 	private String lecturerName;
 	private String announcement;
 	private Timestamp timestamp;
-	private String examCode;
+	private int assessmentId;
 	
 	public AnnouncementInfoDetails() {
 		super();
@@ -16,14 +16,14 @@ public class AnnouncementInfoDetails {
 	}
 
 	public AnnouncementInfoDetails(String moduleCode, String lecturerId, String lecturerName, String announcement, Timestamp timestamp,
-			String examCode) {
+			int assessmentId) {
 		super();
 		this.moduleCode = moduleCode;
 		this.lecturerId = lecturerId;
 		this.lecturerName = lecturerName;
 		this.announcement = announcement;
 		this.timestamp = timestamp;
-		this.examCode = examCode;
+		this.assessmentId = assessmentId;
 	}
 
 	public String getModuleCode() {
@@ -66,13 +66,12 @@ public class AnnouncementInfoDetails {
 		this.timestamp = timestamp;
 	}
 
-	public String getExamCode() {
-		return examCode;
+	public int getAssessmentId() {
+		return assessmentId;
 	}
 
-	public void setExamCode(String examCode) {
-		this.examCode = examCode;
+	public void setAssessmentId(int assessmentId) {
+		this.assessmentId = assessmentId;
 	}
-
 	
 }
