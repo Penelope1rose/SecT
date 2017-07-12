@@ -19,17 +19,9 @@
 </head>
 <body>
 
-	<ul class="nav nav-pills" id="signupbar">
-		<li class="active"><a href="#">Create Account</a></li>
-		<li><a href="#">Add modules</a></li>
-	</ul>
+	<h2 id="signupheader">Create Account</h2>
 
 	<div class="signupcontainer">
-		<div class="progress">
-		  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-		    <span class="sr-only">0% Complete (success)</span>
-		  </div>
-		</div>
 		<form onsubmit="return checkvalue()" action="InsertLecturerInfoServlet" method="post" class="form-signin">
 	        Admission number: <input type="text" name="staffID" id="staffID" class="form-control" placeholder="E.g. S1234567" required autofocus><br>
 	        Name: <input type="text" name="staffName" class="form-control" required autofocus><br>
@@ -49,13 +41,13 @@
     </div>
     <script type="text/javascript">
 		function checkvalue() { 
-			var admNo = document.getElementById('staffID').value;
+			var staffID = document.getElementById('staffID').value;
 			var pass = document.getElementById('password').value; 
 			var pass2 = document.getElementById('password2').value;
 			var no = /^[0-9]+$/;
 			var alp = /^[a-zA-Z]+$/;
-			if (admNo.length != 8) {
-				alert('Admission number must be 8 characters long!');
+			if (staffID.length > 8) {
+				alert('Staff number must not be more than 8 characters long!');
 				return false;
 			}
 			if (pass.length < 8 || pass.length > 16) {

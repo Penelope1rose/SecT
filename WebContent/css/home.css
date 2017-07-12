@@ -161,7 +161,7 @@ body {
     margin-top: 5px;
 }
 
-#addass, #addann, #addmod {
+#addass, #addann, #addmod, #editinfo, #updateprofile {
 	float: right;
 }
 
@@ -210,4 +210,46 @@ body {
     font-weight: bold;
     margin-bottom: 15px;
     margin-top: 10px;
+}
+
+#deletemod {
+	display: none;
+    padding: 0;
+}
+
+#modules:hover #deletemod {
+	display: inline-block;
+}
+
+#lecturerheader {
+	margin: auto;
+	width: 60%;
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.lecturercontainer {
+	width: 50%;
+	margin: auto;
+}
+
+.instructioncontainer {
+	width: 40%;
+	margin: auto;
+}
+
+#instructionheader {
+	margin: auto;
+    width: 9%;
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+#imptmessage {
+	font-weight: bold;
+	color: red;
 }

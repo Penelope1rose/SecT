@@ -1,15 +1,30 @@
-#signupbar {
+#signupheader {
 	margin: auto;
-	width: 19%;	
-	padding-top: 50px;
-	padding-bottom: 50px;
+    width: 20%;
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 50px;
 }
 
-.signupcontainer {
+.signupcontainer, .featurescontainer {
 	width: 40%;
 	margin: auto;
 }
 
-#signupnext {
+#signupnext, #login {
 	float: right;
+}
+
+#featuresheader {
+	margin: auto;
+    width: 17%;
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 50px;
+}
+
+#imptmessage {
+	color: red;
 }

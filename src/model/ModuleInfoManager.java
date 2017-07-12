@@ -22,10 +22,11 @@ public class ModuleInfoManager {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+				int id = rs.getInt("C_ID");
 				String modCode = rs.getString("C_MODULE_CODE");
 				String modName = rs.getString("C_MODULE_NAME");
 
-				ModuleInfoDetails mid = new ModuleInfoDetails(modCode, modName, staffID);
+				ModuleInfoDetails mid = new ModuleInfoDetails(id, modCode, modName, staffID);
 				ModuleInfo.add(mid);
 			}
 			conn.close();
@@ -47,6 +48,24 @@ public class ModuleInfoManager {
 			pstmt.setString(1, modCode);
 			pstmt.setString(2, modName);
 			pstmt.setString(3, staffID);
+			
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void deleteModuleInfo(int hiddenID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "DELETE FROM T_MODULE WHERE C_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hiddenID);
 			
 			pstmt.executeUpdate();
 

@@ -49,20 +49,34 @@
         </div>
       </div>
     </nav>
-
-	<div class="addcontainer">
-	<h2 id="addmoduleheader">Add Module</h2>
-		<form action="InsertModuleInfoServlet">
-			Module Code: <input type="text" name="modCode" class="form-control" required autofocus><br>
-			Module Name: <input type="text" name="modName" class="form-control" required autofocus><br>
-			<input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
-		    <button class="btn btn-primary" id="addmod" type="submit">Add</button>
-		</form>
-	</div>
     <%
 		}
 	}
     %>
 
+	<h2 id="instructionheader">Guide</h2>
+	<div class="instructioncontainer">
+	<h3>Step by step guide:</h3>
+		<p>
+			1) Before doing anything, add the modules that you are in charge of.<br>
+			2) After that, you can proceed to add assessments for the different modules.<br>
+			3) You can then add announcements to the different assessments.<br><br>
+			These announcements will be shown on the students' website for the assessment they are taking.<br><br>
+			4) When you want to start an assessment, click the start button next to that particular assessment.<br><br>
+			A new window will open and from there, you can monitor the students' status and view details of students.<br>
+			<p id="imptmessage">**Important**<br>
+				After the assessment has ended, end the assessment properly by clicking the 'End Assessment' button.
+				If you press the (x) button to close the window, the assessment will not be considered finished.
+			</p>
+		</p>
+    </div>
+
+			
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="dist/js/bootstrap.min.js"></script>
 </body>
 </html>

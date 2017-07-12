@@ -23,10 +23,12 @@ public class LecturerInfoManager {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+				int id = rs.getInt("C_ID");
 				String lecturerID = rs.getString("C_LECTURER_ID");
 				String lecturerName = rs.getString("C_LECTURER_NAME");
+				password = rs.getString("C_PASSWORD");
 
-				LecturerInfoDetails lid = new LecturerInfoDetails(lecturerID, lecturerName);
+				LecturerInfoDetails lid = new LecturerInfoDetails(id, lecturerID, lecturerName, password);
 				LecturerInfo.add(lid);
 			}
 			conn.close();
@@ -80,6 +82,27 @@ public class LecturerInfoManager {
 			
 			pstmt.executeUpdate();
 
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void updateLecturerInfo(String staffID, String staffName, String password, String hiddenID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "UPDATE T_LECTURER_INFO SET C_LECTURER_ID=?, C_LECTURER_NAME=?, C_PASSWORD=? WHERE C_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, staffID);
+			pstmt.setString(2, staffName);
+			pstmt.setString(3, password);
+			pstmt.setString(4, hiddenID);
+			
+			pstmt.executeUpdate();
+			
 			conn.close();
 			
 		} catch (Exception e) {

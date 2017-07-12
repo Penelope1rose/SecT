@@ -1,26 +1,24 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import model.AssessmentInfoManager;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class DeleteAssessmentInfoServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/DeleteAssessmentInfoServlet")
-public class DeleteAssessmentInfoServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteAssessmentInfoServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +28,10 @@ public class DeleteAssessmentInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int hiddenID = Integer.parseInt(request.getParameter("hiddenID"));
-		String staffID = request.getParameter("staffID");
+		HttpSession session = request.getSession();
 		
-		AssessmentInfoManager db = new AssessmentInfoManager();
-
-		db.deleteAssessmentInfo(hiddenID);
-			
-		response.sendRedirect("RetrieveUpdateAssessmentInfoServlet?staffID="+staffID);
+		session.setAttribute("LOGIN", "FALSE");
+		response.sendRedirect("index.jsp");
 	}
 
 	/**
@@ -45,6 +39,7 @@ public class DeleteAssessmentInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 	}
 
 }

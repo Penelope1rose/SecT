@@ -1,6 +1,7 @@
 package model;
 
 public class LecturerInfoDetails {
+	private int id;
 	private String staffNumber;
 	private String staffName;
 	private String password;
@@ -10,8 +11,9 @@ public class LecturerInfoDetails {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LecturerInfoDetails(String staffNumber, String staffName, String password) {
+	public LecturerInfoDetails(int id, String staffNumber, String staffName, String password) {
 		super();
+		this.id = id;
 		this.staffNumber = staffNumber;
 		this.staffName = staffName;
 		this.password = password;
@@ -21,6 +23,14 @@ public class LecturerInfoDetails {
 		super();
 		this.staffNumber = staffNumber;
 		this.staffName = staffName;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getStaffNumber() {

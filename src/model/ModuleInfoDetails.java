@@ -1,6 +1,7 @@
 package model;
 
 public class ModuleInfoDetails {
+	private int id;
 	private String modCode;
 	private String modName;
 	private String staffID;
@@ -10,13 +11,22 @@ public class ModuleInfoDetails {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ModuleInfoDetails(String modCode, String modName, String staffID) {
+	public ModuleInfoDetails(int id, String modCode, String modName, String staffID) {
 		super();
+		this.id = id;
 		this.modCode = modCode;
 		this.modName = modName;
 		this.staffID = staffID;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getModCode() {
 		return modCode;
 	}

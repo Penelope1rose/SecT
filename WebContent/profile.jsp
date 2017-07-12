@@ -9,6 +9,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Custom styles for this template -->
     <link href="css/home.css" rel="stylesheet">
@@ -50,19 +51,16 @@
       </div>
     </nav>
 
-	<div class="addcontainer">
-	<h2 id="addmoduleheader">Add Module</h2>
-		<form action="InsertModuleInfoServlet">
-			Module Code: <input type="text" name="modCode" class="form-control" required autofocus><br>
-			Module Name: <input type="text" name="modName" class="form-control" required autofocus><br>
-			<input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
-		    <button class="btn btn-primary" id="addmod" type="submit">Add</button>
-		</form>
+	<h2 id="lecturerheader">Hello, <%=lecturer.getStaffName()%>&nbsp;<i class="fa fa-smile-o"></i></h2>
+	<div class="lecturercontainer">
+		<h3>Your information is as follows:<a href="editprofile.jsp"><span class="glyphicon glyphicon-edit" id="editinfo" aria-hidden="true" title="Edit information"></span></a></h3><br>
+		<p><b>Name:</b> <%=lecturer.getStaffName()%></p>
+		<p><b>Staff Number:</b> <%=lecturer.getStaffNumber()%></p>
+		<p><b>Password:</b> <span class="glyphicon glyphicon-lock" aria-hidden="true" title="Hidden"></span></p>
 	</div>
     <%
 		}
 	}
     %>
-
 </body>
 </html>

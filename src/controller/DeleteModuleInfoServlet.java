@@ -1,26 +1,25 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AssessmentInfoManager;
+import model.ModuleInfoManager;
 
 /**
- * Servlet implementation class DeleteAssessmentInfoServlet
+ * Servlet implementation class DeleteModuleInfoServlet
  */
-@WebServlet("/DeleteAssessmentInfoServlet")
-public class DeleteAssessmentInfoServlet extends HttpServlet {
+@WebServlet("/DeleteModuleInfoServlet")
+public class DeleteModuleInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteAssessmentInfoServlet() {
+    public DeleteModuleInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,11 +32,11 @@ public class DeleteAssessmentInfoServlet extends HttpServlet {
 		int hiddenID = Integer.parseInt(request.getParameter("hiddenID"));
 		String staffID = request.getParameter("staffID");
 		
-		AssessmentInfoManager db = new AssessmentInfoManager();
+		ModuleInfoManager db = new ModuleInfoManager();
 
-		db.deleteAssessmentInfo(hiddenID);
+		db.deleteModuleInfo(hiddenID);
 			
-		response.sendRedirect("RetrieveUpdateAssessmentInfoServlet?staffID="+staffID);
+		response.sendRedirect("RetrieveModuleInfoServlet?staffID="+staffID);
 	}
 
 	/**
@@ -45,6 +44,7 @@ public class DeleteAssessmentInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 	}
 
 }

@@ -56,9 +56,9 @@
             <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%>&nbsp;<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><a href="#">Profile</a></li>
-	            <li><a href="#">Help</a></li>
-	            <li><a href="#">Log out</a></li>
+	            <li><a href="profile.jsp">Profile</a></li>
+	            <li><a href="detailedhelp.jsp">Help</a></li>
+	            <li><a href="LogoutServlet">Log out</a></li>
 	          </ul>
 	        </li>
           </ul>
@@ -75,7 +75,9 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-          	<li id="moduleheader"><a href="moduleadd.jsp">Modules&nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+          	<li id="moduleheader">
+          	<a href="moduleadd.jsp">Modules&nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+          	</li>
           	<%
           	ArrayList<ModuleInfoDetails> retrieveModuleInfo = (ArrayList<ModuleInfoDetails>)session.getAttribute("module");
 
@@ -83,7 +85,7 @@
 				for(ModuleInfoDetails module:retrieveModuleInfo) {
 		%>
 			<hr id="separator">
-            <li id="modules"><%=module.getModName()%> (<%=module.getModCode()%>)</li>
+            <li id="modules"><a href="DeleteModuleInfoServlet?hiddenID=<%=module.getId()%>&staffID=<%=module.getStaffID()%>" id="deletemod"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></a> <%=module.getModName()%> (<%=module.getModCode()%>)</li>
             
             <%
 				}
