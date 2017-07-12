@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="java.sql.*,java.util.*,db.*,controller.*,model.*,java.util.Date,java.text.*,java.util.concurrent.TimeUnit"%>
+<%@page import="java.sql.*,java.util.*,db.*,controller.*,model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,20 +53,9 @@
       </div>
     </nav>
     
-    <%
-		}
-	}
-    %>
-    
     <div class="addcontainer">
     <h2 id="addannouncementheader">Add Announcement</h2>
     	<form action="InsertAnnouncementInfoServlet">
-    	  <%
-	retrieveLecturerInfo = (ArrayList<LecturerInfoDetails>)session.getAttribute("lecturer");
-
-	if (retrieveLecturerInfo != null) {
-		for(LecturerInfoDetails lecturer:retrieveLecturerInfo) {
-		%>
     		<input type="hidden" name="modCode" id="modCode">
     		<input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
     		<input type="hidden" name="staffName" value="<%=lecturer.getStaffName()%>">

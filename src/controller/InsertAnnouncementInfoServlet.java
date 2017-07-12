@@ -38,7 +38,7 @@ public class InsertAnnouncementInfoServlet extends HttpServlet {
 
 		db.insertAnnouncementInfo(modCode, staffID, staffName, announcement);
 
-		response.sendRedirect("RetrieveAllAnnouncementInfoServlet?staffID="+staffID);
+		response.sendRedirect("RetrieveAssessmentInfoServlet?staffID="+staffID);
 	}
 
 	/**

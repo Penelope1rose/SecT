@@ -21,8 +21,8 @@
   <div class="form">
     <form class="login-form" method="post" action="RetrieveLecturerInfoServlet">
       <div style="color: #FF0000;">${errorMessage}</div>
-      <input type="text" name="staffID" placeholder="staff ID" required auto-focus>
-      <input type="password" name="password" placeholder="password" required auto-focus>
+      <input type="text" name="staffID" placeholder="Staff number" required auto-focus>
+      <input type="password" name="password" placeholder="Password" required auto-focus>
       <input type="submit" id="loginbutton" value="login">
       <p class="message">Not registered? <a href="signup.jsp">Create an account</a></p>
     </form>

@@ -161,7 +161,7 @@ body {
     margin-top: 5px;
 }
 
-#addass, #addann {
+#addass, #addann, #addmod {
 	float: right;
 }
 
@@ -197,6 +197,15 @@ body {
 #addannouncementheader {
 	margin: auto;
     width: 63%;
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+#addmoduleheader {
+	margin: auto;
+    width: 40%;
     padding: 15px;
     font-weight: bold;
     margin-bottom: 15px;

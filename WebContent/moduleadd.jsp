@@ -11,7 +11,7 @@
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/signup.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
     
     <!-- Favicon -->
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -24,25 +24,45 @@
 	%> 
 </head>
 <body>
+  <%
+	ArrayList<LecturerInfoDetails> retrieveLecturerInfo = (ArrayList<LecturerInfoDetails>)session.getAttribute("lecturer");
 
-	<ul class="nav nav-pills" id="signupbar">
-		<li id="signupnav"><a href="#">Create Account</a></li>
-		<li class="active" id="signupnav2"><a href="#">Add modules</a></li>
-	</ul>
-	<div class="signupcontainer">
-		<div class="progress">
-		  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-		    <span class="sr-only">50% Complete (success)</span>
-		  </div>
-		</div>
-		<form action="home.jsp">
+	if (retrieveLecturerInfo != null) {
+		for(LecturerInfoDetails lecturer:retrieveLecturerInfo) {
+		%>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%>&nbsp;<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Settings</a></li>
+	            <li><a href="#">Profile</a></li>
+	            <li><a href="#">Help</a></li>
+	          </ul>
+	        </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+	<div class="addcontainer">
+	<h2 id="addmoduleheader">Add Module</h2>
+		<form action="InsertModuleInfoServlet">
+			Module Code: <input type="text" name="modCode" class="form-control" required autofocus><br>
 			Module Name: <input type="text" name="modName" class="form-control" required autofocus><br>
-	        Module Code: <input type="text" name="modCode" class="form-control" required autofocus><br>
-	        <a href="index.jsp">Add later (login)</a>
-		    <button class="btn btn-primary" id="signupnext" type="submit">Finish</button>
+			<input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
+		    <button class="btn btn-primary" id="addmod" type="submit">Add</button>
 		</form>
 	</div>
-
+    <%
+		}
+	}
+    %>
 
 </body>
 </html>

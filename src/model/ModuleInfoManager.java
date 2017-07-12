@@ -36,4 +36,24 @@ public class ModuleInfoManager {
 			return null;
 		}
 	}
+	
+	public static void insertModuleInfo(String modCode, String modName, String staffID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "INSERT INTO T_MODULE(C_MODULE_CODE, C_MODULE_NAME, C_LECTURER_ID) VALUES (?,?,?)";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, modCode);
+			pstmt.setString(2, modName);
+			pstmt.setString(3, staffID);
+			
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 }
