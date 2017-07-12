@@ -75,7 +75,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-          	<li id="moduleheader"><a href="secondmoduleadd.jsp">Modules&nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
+          	<li id="moduleheader"><a href="moduleadd.jsp">Modules&nbsp;<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></li>
           	<%
           	ArrayList<ModuleInfoDetails> retrieveModuleInfo = (ArrayList<ModuleInfoDetails>)session.getAttribute("module");
 
@@ -127,7 +127,7 @@
 				   <button type="submit" class="btn btn-default">Enter</button>
 				</form>
 
-				<form action="RetrieveSpecifiedAnnouncementInfoServlet" class="navbar-form navbar-right" id="addannouncement">
+				<form action="RetrieveSpecifiedAssessmentInfoServlet" class="navbar-form navbar-right" id="addannouncement">
 			<%
 				retrieveAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 

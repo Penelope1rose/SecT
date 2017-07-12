@@ -102,7 +102,7 @@ public class AssessmentInfoManager {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "INSERT INTO T_ASSESSMENT(C_MODULE_CODE, C_MODULE_NAME, C_LECTURER_ID, C_ASSESSMENT_NAME, C_PERIOD, C_DATETIME, C_EXAM_CODE) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO T_ASSESSMENT(C_MODULE_CODE, C_MODULE_NAME, C_LECTURER_ID, C_ASSESSMENT_NAME, C_PERIOD, C_DATETIME, C_EXAM_CODE, C_STARTED) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, modCode);

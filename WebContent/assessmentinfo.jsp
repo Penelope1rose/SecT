@@ -63,7 +63,8 @@
 	      	<span class="glyphicon glyphicon-list-alt" id="listall" aria-hidden="true"></span>
 	      </a>
       </h2>
-      <form action="secondmoduleadd.jsp">
+      <form action="RetrieveSpecifiedModuleInfoServlet">
+      <input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
       <button class="btn btn-default" id="add">
 			<span class="glyphicon glyphicon-plus" id="addbox" aria-hidden="true"> Add Assessment</span>
 	  </button>

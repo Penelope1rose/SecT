@@ -14,16 +14,16 @@ import model.AssessmentInfoDetails;
 import model.AssessmentInfoManager;
 
 /**
- * Servlet implementation class RetrieveSpecifiedAnnouncementInfoServlet
+ * Servlet implementation class RetrieveSpecifiedAssessmentInfoServlet
  */
-@WebServlet("/RetrieveSpecifiedAnnouncementInfoServlet")
-public class RetrieveSpecifiedAnnouncementInfoServlet extends HttpServlet {
+@WebServlet("/RetrieveSpecifiedAssessmentInfoServlet")
+public class RetrieveSpecifiedAssessmentInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveSpecifiedAnnouncementInfoServlet() {
+    public RetrieveSpecifiedAssessmentInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,7 +42,7 @@ public class RetrieveSpecifiedAnnouncementInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 			
 		session.setAttribute("assessment", Assessment);
-		response.sendRedirect("assessmentadd.jsp");
+		response.sendRedirect("announcementadd.jsp");
 	}
 
 	/**
