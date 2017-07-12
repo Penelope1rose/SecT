@@ -7,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Secured-T</title>
 
+	<!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -41,9 +44,9 @@
             <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<%=lecturer.getStaffName()%>&nbsp;<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><a href="#">Settings</a></li>
-	            <li><a href="#">Profile</a></li>
-	            <li><a href="#">Help</a></li>
+	            <li><a href="profile.jsp">Profile</a></li>
+	            <li><a href="detailedhelp.jsp">Help</a></li>
+	            <li><a href="LogoutServlet">Log out</a></li>
 	          </ul>
 	        </li>
           </ul>
@@ -92,5 +95,10 @@
 			return true;
 		}
 	</script>
+	    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="dist/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
 
 	<div class="signupcontainer">
 		<form onsubmit="return checkvalue()" action="InsertLecturerInfoServlet" method="post" class="form-signin">
-	        Admission number: <input type="text" name="staffID" id="staffID" class="form-control" placeholder="E.g. S1234567" required autofocus><br>
+	        Staff number: <input type="text" name="staffID" id="staffID" class="form-control" placeholder="E.g. S1234567" required autofocus><br>
 	        Name: <input type="text" name="staffName" class="form-control" required autofocus><br>
 	        Password: <input type="password" name="password" id="password" class="form-control" required autofocus><br>
 	        Confirm Password: <input type="password" id="password2" class="form-control" required autofocus><br>

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -42,10 +44,26 @@ public class RetrieveLecturerInfoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String staffID = request.getParameter("staffID");
 		String password = request.getParameter("password");
+		String encryptedpass = null;
+		
+        MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+			md.update(password.getBytes());
+		       byte[] b = md.digest();
+		       StringBuffer sb = new StringBuffer();
+		       for(byte b1 : b){
+		           sb.append(Integer.toHexString(b1 & 0xff).toString());
+		       }
+		       encryptedpass = sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		LecturerInfoManager db = new LecturerInfoManager();
 
-		ArrayList<LecturerInfoDetails> lecturer = db.retrieveLecturerInfo(staffID, password);
+		ArrayList<LecturerInfoDetails> lecturer = db.retrieveLecturerInfo(staffID, encryptedpass);
 		
 		HttpSession session = request.getSession();
 
