@@ -12,19 +12,18 @@ import javax.servlet.http.HttpSession;
 
 import model.AssessmentInfoDetails;
 import model.AssessmentInfoManager;
-import model.LecturerInfoDetails;
 
 /**
- * Servlet implementation class RetrieveStartAssessmentInfoServlet
+ * Servlet implementation class RetrieveAssessmentDomainInfoServlet
  */
-@WebServlet("/RetrieveStartAssessmentInfoServlet")
-public class RetrieveStartAssessmentInfoServlet extends HttpServlet {
+@WebServlet("/RetrieveAssessmentDomainInfoServlet")
+public class RetrieveAssessmentDomainInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveStartAssessmentInfoServlet() {
+    public RetrieveAssessmentDomainInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +33,16 @@ public class RetrieveStartAssessmentInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int hiddenID = Integer.parseInt(request.getParameter("hiddenID"));
+		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
 		
 		AssessmentInfoManager db = new AssessmentInfoManager();
 
-		ArrayList<AssessmentInfoDetails> startAssessment = db.retrieveStartAssessmentInfo(hiddenID);
+		ArrayList<AssessmentInfoDetails> Assessment = db.retrieveStartAssessmentInfo(assessmentId);
 
 		HttpSession session = request.getSession();
-		
-		session.removeAttribute("REFRESH");
-		session.setAttribute("startassessment", startAssessment);
-		response.sendRedirect("RetrieveStudentInfoServlet?assessmentId="+hiddenID);
-
+			
+		session.setAttribute("dassessment", Assessment);
+		response.sendRedirect("whitelistdomain.jsp");
 	}
 
 	/**

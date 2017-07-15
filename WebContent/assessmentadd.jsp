@@ -14,6 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="dist/css/bootstrap-tagsinput.css" />
 
     <!-- Custom styles for this template -->
     <link href="css/home.css" rel="stylesheet">
@@ -105,7 +106,7 @@
             </div><br>
             Exam Code: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="The code for students to access the assessment"></span>
             <input type="text" name="examCode" class="form-control" required autofocus><br>
-	        <button class="btn btn-primary" id="addass" type="submit">Add</button>
+	        <button class="btn btn-primary" id="addass" type="submit">Next</button>
 		</form>
    
 	</div>
@@ -114,7 +115,6 @@
 		}
 	}
     %>
-    
     <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
@@ -129,5 +129,7 @@
     <script type="text/javascript" src="dist/js/moment.min.js"></script>
 	<script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="dist/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="dist/js/bootstrap-tagsinput.js"></script>
+	<script type="text/javascript" src="dist/js/bootstrap-tagsinput-angular.js"></script>
 </body>
 </html>

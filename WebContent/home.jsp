@@ -85,7 +85,7 @@
 				for(ModuleInfoDetails module:retrieveModuleInfo) {
 		%>
 			<hr id="separator">
-            <li id="modules"><a href="DeleteModuleInfoServlet?hiddenID=<%=module.getId()%>&staffID=<%=module.getStaffID()%>" id="deletemod"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></a> <%=module.getModName()%> (<%=module.getModCode()%>)</li>
+            <li id="modules"><a href="DeleteModuleInfoServlet?hiddenID=<%=module.getId()%>&staffID=<%=module.getStaffID()%>" id="deletemod"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true" title="remove module"></span></a> <%=module.getModName()%> (<%=module.getModCode()%>)</li>
             
             <%
 				}

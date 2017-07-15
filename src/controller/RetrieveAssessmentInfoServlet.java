@@ -40,7 +40,7 @@ public class RetrieveAssessmentInfoServlet extends HttpServlet {
 		ArrayList<AssessmentInfoDetails> Assessment = db.retrieveAssessmentInfo(staffID);
 
 		HttpSession session = request.getSession();
-			
+		
 		session.setAttribute("assessment", Assessment);
 		response.sendRedirect("RetrieveAllAnnouncementInfoServlet?staffID="+staffID);
 

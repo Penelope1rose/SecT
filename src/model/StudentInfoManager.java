@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import db.*;
 
 public class StudentInfoManager{
-	public static ArrayList<StudentInfoDetails> retrieveStudentInfo(String examCode) {
+	public static ArrayList<StudentInfoDetails> retrieveStudentInfo(int assessmentId) {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "SELECT * FROM T_STUDENT_INFO WHERE C_EXAM_CODE=?";
+			String sql = "SELECT * FROM T_STUDENT_INFO WHERE C_ASSESSMENT_ID=?";
 			
 			ArrayList<StudentInfoDetails> StudentInfo = new ArrayList<StudentInfoDetails>();
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, examCode);
+			pstmt.setInt(1, assessmentId);
 			
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -90,6 +90,24 @@ public class StudentInfoManager{
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, hiddenID);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void deleteAllStudentInfo(int assessmentId) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "DELETE FROM T_STUDENT_INFO WHERE C_ASSESSMENT_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, assessmentId);
 			
 			pstmt.executeUpdate();
 			

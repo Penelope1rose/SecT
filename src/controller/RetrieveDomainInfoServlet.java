@@ -10,21 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.AssessmentInfoDetails;
-import model.AssessmentInfoManager;
-import model.LecturerInfoDetails;
+import model.DomainInfoDetails;
+import model.DomainInfoManager;
 
 /**
- * Servlet implementation class RetrieveStartAssessmentInfoServlet
+ * Servlet implementation class RetrieveDomainInfoServlet
  */
-@WebServlet("/RetrieveStartAssessmentInfoServlet")
-public class RetrieveStartAssessmentInfoServlet extends HttpServlet {
+@WebServlet("/RetrieveDomainInfoServlet")
+public class RetrieveDomainInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveStartAssessmentInfoServlet() {
+    public RetrieveDomainInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +33,16 @@ public class RetrieveStartAssessmentInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int hiddenID = Integer.parseInt(request.getParameter("hiddenID"));
+		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
 		
-		AssessmentInfoManager db = new AssessmentInfoManager();
+		DomainInfoManager db = new DomainInfoManager();
 
-		ArrayList<AssessmentInfoDetails> startAssessment = db.retrieveStartAssessmentInfo(hiddenID);
+		ArrayList<DomainInfoDetails> Domain = db.retrieveDomainInfo(assessmentId);
 
 		HttpSession session = request.getSession();
-		
-		session.removeAttribute("REFRESH");
-		session.setAttribute("startassessment", startAssessment);
-		response.sendRedirect("RetrieveStudentInfoServlet?assessmentId="+hiddenID);
-
+			
+		session.setAttribute("domain", Domain);
+		response.sendRedirect("RetrieveAssessmentDomainInfoServlet?assessmentId="+assessmentId);
 	}
 
 	/**

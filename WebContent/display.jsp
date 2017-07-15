@@ -76,7 +76,10 @@ if (retrieveStudentInfo != null) {
 		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds%>
 		<%
 		if (diffsecs <= 8 && diffsecs >= 0 && student.getDisconnected() == 0) { %>
-			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>"></li>
+			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+				<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
+				<p id="subip<%=student.getId()%>" class="subip"></p>
+			</li>
 		
 			<button id="startsskl<%=student.getId()%>" class="btn startsskl" onclick="startredirect(<%=student.getId()%>)" title="Start screen capture and keylogger">
 				Start
@@ -108,6 +111,10 @@ if (retrieveStudentInfo != null) {
 			function stopredirect(id) {
 				window.location="UpdateStopSSKLStudentInfoServlet?hiddenID="+id;
 			}
+			
+			var ip = $("#ipaddress<%=student.getId()%>").html();
+			var subip = ip.substring(12);
+			$("#subip<%=student.getId()%>").append(subip);
 
 			</script>
 		<%
@@ -120,7 +127,14 @@ if (retrieveStudentInfo != null) {
 			</form>
 			
 			<img src="images/L2.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+			<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
+			<p id="subip<%=student.getId()%>" class="subip"></p>
 			</li>
+			<script type="text/javascript">
+				var ip = $("#ipaddress<%=student.getId()%>").html();
+				var subip = ip.substring(12);
+				$("#subip<%=student.getId()%>").append(subip);
+			</script>
 		<%
 			if (showAlert == true) { %>
 			<script type="text/javascript">

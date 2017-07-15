@@ -1,30 +1,27 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.AssessmentInfoDetails;
-import model.AssessmentInfoManager;
-import model.LecturerInfoDetails;
+import model.DomainInfoManager;
 
 /**
- * Servlet implementation class RetrieveStartAssessmentInfoServlet
+ * Servlet implementation class InsertDomainInfoServlet
  */
-@WebServlet("/RetrieveStartAssessmentInfoServlet")
-public class RetrieveStartAssessmentInfoServlet extends HttpServlet {
+@WebServlet("/InsertDomainInfoServlet")
+public class InsertDomainInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveStartAssessmentInfoServlet() {
+    public InsertDomainInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +31,18 @@ public class RetrieveStartAssessmentInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int hiddenID = Integer.parseInt(request.getParameter("hiddenID"));
+		String staffID = request.getParameter("staffID");
+		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
+		String domains = request.getParameter("domain");
+		String whitelistdomain[] = domains.split(",");
 		
-		AssessmentInfoManager db = new AssessmentInfoManager();
+		DomainInfoManager db = new DomainInfoManager();
 
-		ArrayList<AssessmentInfoDetails> startAssessment = db.retrieveStartAssessmentInfo(hiddenID);
+		for (int i=0; i<whitelistdomain.length; i++) {
+			db.insertDomainInfo(whitelistdomain[i], assessmentId, staffID);
+		}
 
-		HttpSession session = request.getSession();
-		
-		session.removeAttribute("REFRESH");
-		session.setAttribute("startassessment", startAssessment);
-		response.sendRedirect("RetrieveStudentInfoServlet?assessmentId="+hiddenID);
-
+		response.sendRedirect("RetrieveDomainInfoServlet?assessmentId="+assessmentId);
 	}
 
 	/**

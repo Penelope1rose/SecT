@@ -80,7 +80,7 @@ public class AnnouncementInfoManager{
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "INSERT INTO T_ANNOUNCEMENT(C_MODULE_CODE, C_LECTURER_ID, C_LECTURER_NAME, C_ANNOUNCEMENT, C_TIMESTAMP, C_EXAM_CODE) VALUES (?, ?, ?, ?, now(), (SELECT C_ID FROM T_ASSESSMENT WHERE C_MODULE_CODE=? AND C_STARTED=0))";
+			String sql = "INSERT INTO T_ANNOUNCEMENT(C_MODULE_CODE, C_LECTURER_ID, C_LECTURER_NAME, C_ANNOUNCEMENT, C_TIMESTAMP, C_ASSESSMENT_ID) VALUES (?, ?, ?, ?, now(), (SELECT C_ID FROM T_ASSESSMENT WHERE C_MODULE_CODE=? AND C_STARTED=0))";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, modCode);

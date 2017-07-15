@@ -36,11 +36,11 @@ public class RetrieveStudentInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String examCode = request.getParameter("examCode");
+		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
 		
 		StudentInfoManager db = new StudentInfoManager();
 
-		ArrayList<StudentInfoDetails> student = db.retrieveStudentInfo(examCode);
+		ArrayList<StudentInfoDetails> student = db.retrieveStudentInfo(assessmentId);
 		
 		HttpSession session = request.getSession();
 		

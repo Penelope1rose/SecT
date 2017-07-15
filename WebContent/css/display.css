@@ -163,3 +163,13 @@ body {
     margin: auto;
     margin-bottom: 10px;
 }
+
+.ipaddress {
+	display: None;
+}
+
+.subip {
+	padding-left: 50px;
+	position: absolute;
+    margin-top: -70px;
+}

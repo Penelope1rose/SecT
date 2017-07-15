@@ -91,16 +91,25 @@
 			</button>
 			</form>
 			
-			<form id="start" onClick="window.open('RetrieveStartAssessmentInfoServlet?hiddenID=<%=assessment.getId()%>&examCode=<%=assessment.getExamCode()%>');">
+			<form id="start" onClick="window.open('RetrieveStartAssessmentInfoServlet?hiddenID=<%=assessment.getId()%>');">
 			<button class="btn btn-default" id="startbutton">
 				<span class="glyphicon glyphicon-copy" id="startbox" aria-hidden="true"> Start</span>
 			</button>
 			</form>
+			
+			<form id="domains" action="RetrieveDomainInfoServlet">
+			<input type="hidden" name="assessmentId" value="<%=assessment.getId()%>">
+			<button class="btn btn-default" id="startbutton">
+				<span class="glyphicon glyphicon-copy" id="domainbox" aria-hidden="true"> Domains</span>
+			</button>
+			</form>
+			
 		  </h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
+                  <th>Assessment ID</th>
                   <th>Module Code</th>
                   <th>Module Name</th>
                   <th>Assessment Name</th>
@@ -111,6 +120,7 @@
               </thead>
               <tbody>
                 <tr>
+                  <td><%=assessment.getId()%></td>
                   <td><%=assessment.getModuleCode()%></td>
                   <td><%=assessment.getModuleName()%></td>
                   <td><%=assessment.getAssessmentName()%></td>

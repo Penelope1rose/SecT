@@ -122,7 +122,7 @@ public class AssessmentInfoManager {
 		}
 	}
 	
-	public static ArrayList<AssessmentInfoDetails> retrieveStartAssessmentInfo(String hiddenID) {
+	public static ArrayList<AssessmentInfoDetails> retrieveStartAssessmentInfo(int hiddenID) {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
@@ -131,7 +131,7 @@ public class AssessmentInfoManager {
 			ArrayList<AssessmentInfoDetails> startAssessment = new ArrayList<AssessmentInfoDetails>();
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, hiddenID);
+			pstmt.setInt(1, hiddenID);
 			
 			ResultSet rs = pstmt.executeQuery();
 			

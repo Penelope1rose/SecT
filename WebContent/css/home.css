@@ -117,7 +117,7 @@ body {
 	padding-bottom: 5px;
 }
 
-#deletebox, #addbox, #startbox {
+#deletebox, #addbox, #startbox, #domainbox {
 	padding-bottom: 5px;
 }
 
@@ -128,7 +128,7 @@ body {
     position: absolute;
 }
 
-#delete, #start {
+#delete, #start, #domains, #adddomain {
 	float: right;
     position: relative;
 }
@@ -213,12 +213,16 @@ body {
     margin-top: 10px;
 }
 
-#deletemod {
+#deletemod, #deletedomain, .dbdomain {
 	display: none;
     padding: 0;
 }
 
 #modules:hover #deletemod {
+	display: inline-block;
+}
+
+.assdomain:hover #deletedomain {
 	display: inline-block;
 }
 
@@ -236,7 +240,7 @@ body {
 	margin: auto;
 }
 
-.instructioncontainer {
+.instructioncontainer, .domaincontainer {
 	width: 40%;
 	margin: auto;
 }
@@ -253,4 +257,17 @@ body {
 #imptmessage {
 	font-weight: bold;
 	color: red;
+}
+
+#domainheader {
+	margin: auto;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+#domainform {
+	padding-top: 50px;
 }
