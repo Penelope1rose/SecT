@@ -257,6 +257,7 @@ body {
 #imptmessage {
 	font-weight: bold;
 	color: red;
+	padding-bottom: 30px;
 }
 
 #domainheader {
@@ -270,4 +271,26 @@ body {
 
 #domainform {
 	padding-top: 50px;
+}
+
+#green, #red {
+	width: 90%;
+	margin-left: 50px;
+	margin-bottom: 30px;
+}
+
+#blue {
+	width: 90%;
+	margin-left: 50px;
+	margin-bottom: 40px;
+}
+
+#bluetext {
+	margin-top: -70px;
+    margin-left: 140px;
+}
+
+#greentext, #redtext {
+	margin-top: -80px;
+    margin-left: 140px;
 }

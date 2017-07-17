@@ -63,10 +63,23 @@
 		<p>
 			1) Before doing anything, add the modules that you are in charge of.<br>
 			2) After that, you can proceed to add assessments for the different modules.<br>
-			3) You can then add announcements to the different assessments.<br><br>
+			3) Then, for each assessment, you can add domains that the student is allowed access during the assessment.<br>
+			4) You can then add announcements to the different assessments.<br><br>
 			These announcements will be shown on the students' website for the assessment they are taking.<br><br>
-			4) When you want to start an assessment, click the start button next to that particular assessment.<br><br>
-			A new window will open and from there, you can monitor the students' status and view details of students.<br>
+			5) When you want to start an assessment, click the start button next to that particular assessment.<br><br>
+			A new window will open and from there, you can monitor the students' status and view details of students.<br><br>
+			<div id="green">
+				<img src="images/L3.png" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true">
+				<p id="greentext">A green laptop means that the student is connected and nothing is wrong. From here, you can start and stop screen capture and keylogging.</p>
+			</div>
+			<div id="blue">
+				<img src="images/L1.png" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true">
+				<p id="bluetext">A blue laptop means that the student is connected but <b>CHEATING</b>.</p>
+			</div>
+			<div id="red">
+				<img src="images/L2.png" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true">
+				<p id="redtext">A red laptop means that the student is <b>DISCONNECTED</b>. From here, you can remove the laptop if it is not needed anymore.</p>
+			</div>
 			<p id="imptmessage">**Important**<br>
 				After the assessment has ended, end the assessment properly by clicking the 'End Assessment' button.
 				If you press the (x) button to close the window, the assessment will not be considered finished.

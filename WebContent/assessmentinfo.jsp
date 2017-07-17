@@ -100,7 +100,7 @@
 			<form id="domains" action="RetrieveDomainInfoServlet">
 			<input type="hidden" name="assessmentId" value="<%=assessment.getId()%>">
 			<button class="btn btn-default" id="startbutton">
-				<span class="glyphicon glyphicon-copy" id="domainbox" aria-hidden="true"> Domains</span>
+				<span class="glyphicon glyphicon-ok-sign" id="domainbox" aria-hidden="true"> Domains</span>
 			</button>
 			</form>
 			

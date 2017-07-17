@@ -119,6 +119,25 @@ if (retrieveStudentInfo != null) {
 			</script>
 		<%
 		}
+		else if (student.getCheating() == 1) { %>
+			<li id="compimg"><img src="images/L1.png" id="cheating" alt="Cheating" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+				<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
+				<p id="subip<%=student.getId()%>" class="subip"></p>
+			</li>
+			<script type="text/javascript">
+				var ip = $("#ipaddress<%=student.getId()%>").html();
+				var subip = ip.substring(12);
+				$("#subip<%=student.getId()%>").append(subip);
+			</script>
+			<%
+			if (showAlert == true) { %>
+			<script type="text/javascript">
+				alert ("1 or more student(s) is/are CHEATING!");
+			</script>
+			<%
+				showAlert = false;
+			}
+		}
 		else { %>
 			<li id="compimg">
 			<form action="DeleteStudentInfoServlet" onsubmit="return confirmDelete()">
@@ -138,7 +157,7 @@ if (retrieveStudentInfo != null) {
 		<%
 			if (showAlert == true) { %>
 			<script type="text/javascript">
-				alert ("1 or more student(s) has/have disconnected!");
+				alert ("1 or more student(s) has/have DISCONNECTED!");
 			</script>
 			<%
 				showAlert = false;
