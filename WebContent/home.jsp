@@ -147,8 +147,9 @@
 				</form>
 
           <%
-			  		ArrayList<AnnouncementInfoDetails> retrieveAnnouncement = (ArrayList<AnnouncementInfoDetails>)session.getAttribute("announcement");
-			  		for(AnnouncementInfoDetails announcement:retrieveAnnouncement) {
+		  ArrayList<AnnouncementInfoDetails> retrieveAnnouncement = (ArrayList<AnnouncementInfoDetails>)session.getAttribute("announcement");
+          if (retrieveAnnouncement != null) {  		
+          for(AnnouncementInfoDetails announcement:retrieveAnnouncement) {
 						SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 			  		%>
 					<p id="individual_announcement">
@@ -161,6 +162,7 @@
 
 			<%
 			  		}
+          }
 			%>
 
 	        </div>
