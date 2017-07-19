@@ -34,6 +34,7 @@ public class InsertDomainInfoServlet extends HttpServlet {
 		String staffID = request.getParameter("staffID");
 		int assessmentId = Integer.parseInt(request.getParameter("assessmentId"));
 		String domains = request.getParameter("domain");
+		domains = domains.replace("." , "\\.");
 		String whitelistdomain[] = domains.split(",");
 		
 		DomainInfoManager db = new DomainInfoManager();

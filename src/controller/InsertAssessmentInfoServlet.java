@@ -42,7 +42,7 @@ public class InsertAssessmentInfoServlet extends HttpServlet {
 
 		db.insertAssessmentInfo(modCode, modName, staffID, assessmentName, period, datetime, examCode);
 
-		response.sendRedirect("domainadd.jsp");
+		response.sendRedirect("RetrieveAssessmentInfoServlet?staffID="+staffID);
 	}
 
 	/**

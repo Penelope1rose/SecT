@@ -59,7 +59,7 @@
     </nav>
     <div class="addcontainer">
     <h2 id="addassessmentheader">Add Assessment</h2>
-    	<form action="InsertAssessmentInfoServlet">
+    	<form onsubmit="return checkvalue()" action="InsertAssessmentInfoServlet">
 	    	<input type="hidden" name="modCode" id="modCode">
 	    	<input type="hidden" name="modName" id="modName">
 	    	<input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
@@ -96,16 +96,17 @@
 			  </select>
 			</div>
 	        Assessment Name: <input type="text" name="assessmentName" class="form-control" required autofocus><br>
-	        Time Limit (minutes): <input type="number" name="period" min="1" class="form-control" required autofocus><br>
-	        Date and Time:
+	        Time Limit (minutes): <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Length of the assessment"></span>
+	        <input type="number" name="period" min="1" class="form-control" required autofocus><br>
+	        Date and Time: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Format (yyyy-mm-dd hh:mm:ss)"></span>
 			<div class='input-group date' id='datetimepicker1'>
                     <input type='text' class="form-control" name="datetime" id="datetime"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
             </div><br>
-            Exam Code: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="The code for students to access the assessment"></span>
-            <input type="text" name="examCode" class="form-control" required autofocus><br>
+            Exam Code: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="The code for students to access the assessment (no more than 6 characters)"></span>
+            <input type="text" name="examCode" id="examCode" class="form-control" required autofocus><br>
 	        <button class="btn btn-primary" id="addass" type="submit">Next</button>
 		</form>
    
@@ -119,6 +120,15 @@
             $(function () {
                 $('#datetimepicker1').datetimepicker();
             });
+            
+            function checkvalue() { 
+    			var examCode = document.getElementById('examCode').value;
+    			if (examCode.length > 6) {
+    				alert('Exam code must not be more than 6 characters long!');
+    				return false;
+    			}
+    			return true;
+            }
     </script>
     
     <!-- Bootstrap core JavaScript

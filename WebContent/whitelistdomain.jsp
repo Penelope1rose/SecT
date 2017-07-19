@@ -81,7 +81,7 @@
                   
                   <script type="text/javascript">
                   	var dbdomain = $("#dbdomain<%=domain.getId()%>").html();
-          			domain = dbdomain.replace('\\','');
+          			domain = dbdomain.replace(/\\/g, '');
           			$("#assdomain<%=domain.getId()%>").prepend(domain);
                   </script>
         <%
@@ -89,11 +89,11 @@
 				}
     	%>
     	</ol>
-    	<form action="InsertDomainInfoServlet" id="domainform">
+    	<form onsubmit="return checkvalue()" action="InsertDomainInfoServlet" id="domainform">
     	<input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
     	<input type="hidden" name="assessmentId" value="<%=assessment.getId()%>">
-	        Add Domains: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Domains that students are allowed to access"></span>
-            <input type="text" id="domain" name="domain" data-role="tagsinput" placeholder="Enter to confirm the domain" required autofocus><br><br>
+	        Add Domains: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Domains that students are allowed to access (must start with www.)"></span>
+            <input type="text" id="domain" name="domain" data-role="tagsinput" placeholder="Enter to confirm the domain " required autofocus><br><br>
 	        <button class="btn btn-primary" id="adddomain" type="submit">Done</button>
 		</form>
           </div>
@@ -114,6 +114,17 @@
            }
         });
      });
+    
+    function checkvalue() { 
+		var domain = document.getElementById('domain').value;
+		var start = /^www./;
+
+		if (!start.test(domain)) {
+			alert ('The domain must start with www.');
+			return false;
+		}
+		return true;
+	}
 	</script>
 
 
