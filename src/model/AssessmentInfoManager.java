@@ -175,5 +175,41 @@ public class AssessmentInfoManager {
 			System.out.println(e);
 		}
 	}
+	
+	public static ArrayList<AssessmentInfoDetails> retrieveAssessmentInfo(int hiddenID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "SELECT * FROM T_ASSESSMENT WHERE C_ID=?";
+			
+			ArrayList<AssessmentInfoDetails> startAssessment = new ArrayList<AssessmentInfoDetails>();
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hiddenID);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int id = rs.getInt("C_ID");
+				String moduleCode = rs.getString("C_MODULE_CODE");
+				String moduleName = rs.getString("C_MODULE_NAME");
+				String lecturerID = rs.getString("C_LECTURER_ID");
+				String assessmentName = rs.getString("C_ASSESSMENT_NAME");
+				int period = rs.getInt("C_PERIOD");
+				String datetime = rs.getString("C_DATETIME");
+				String examCode = rs.getString("C_EXAM_CODE");
+				int started = rs.getInt("C_STARTED");
+
+				AssessmentInfoDetails said = new AssessmentInfoDetails(id, moduleCode, moduleName, lecturerID, assessmentName, period, datetime, examCode, started);
+				startAssessment.add(said);
+			}
+			conn.close();
+			return startAssessment; 
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
 
 }

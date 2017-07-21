@@ -71,6 +71,12 @@
 		}
 	}
     %>
+    
+    <div id="space"></div>
+    <footer class="footer">
+	   <p id="copyright">&copy; 2017 Singapore Polytechnic (DISM/FT/3A/62)</p>
+	</footer>
+	
     <script type="text/javascript">
 		function checkvalue() { 
 			var staffID = document.getElementById('staffID').value; 

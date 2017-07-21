@@ -84,10 +84,19 @@
 				After the assessment has ended, end the assessment properly by clicking the 'End Assessment' button.
 				If you press the (x) button to close the window, the assessment will not be considered finished.
 			</p>
+			6) After the end of an assessment, it will be removed from upcoming assessments.<br><br>
+			7) To see student details or clear database information related to an assessment, proceed to list all assessments.<br><br>
+			<p id="imptmessage">**Important**<br>
+				Make sure you do not need the information related to the assessment anymore before you clear the database related to it.
+			</p>
 		</p>
     </div>
+    
+    <div id="space"></div>
+    <footer class="footer">
+	   <p id="copyright">&copy; 2017 Singapore Polytechnic (DISM/FT/3A/62)</p>
+	</footer>
 
-			
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

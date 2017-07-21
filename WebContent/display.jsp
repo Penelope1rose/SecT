@@ -56,11 +56,11 @@ if (retrieveStartAssessmentInfo != null) {
 		<h2>Exam Code: <%=assessment.getExamCode()%></h2>
 	</div>
 	
-<%--  	<script type="text/javascript">
+ 	<script type="text/javascript">
 	setTimeout(function(){
 		   window.location="RetrieveStudentInfoServlet?examCode=<%=assessment.getExamCode()%>";
-		}, 10000);
-	</script> --%>
+		}, 12000);
+	</script>
 <div id="allcomp">
 	<ul class="list-inline" id="allcompimg">
 <%

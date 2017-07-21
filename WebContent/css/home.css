@@ -7,6 +7,43 @@ body {
   padding-top: 50px;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footerhome {
+	padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+    position: absolute;
+    left: 214px;
+    bottom: 0;
+    height: 60px;
+    width: 83%;
+    overflow: hidden;
+}
+
+#copyright {
+	padding-left: 20px;
+}
+
+#space {
+	margin-top: 70px;
+}
 
 /*
  * Global add-ons
@@ -117,7 +154,7 @@ body {
 	padding-bottom: 5px;
 }
 
-#deletebox, #addbox, #startbox, #domainbox {
+#deletebox, #addbox, #startbox, #domainbox, #viewbox {
 	padding-bottom: 5px;
 }
 
@@ -133,11 +170,23 @@ body {
     position: relative;
 }
 
+#clear, #view {
+	float: right;
+    position: relative;
+	margin-top: -30px;
+}
+
 #allassheader {
 	margin: auto;
     width: 21%;
     padding: 10px;
     font-weight: bold;
+}
+
+#studentsheader {
+	position: relative;
+    left: 30px;
+    width: 95%;
 }
 
 #assessmentheader {
@@ -257,7 +306,7 @@ body {
 #imptmessage {
 	font-weight: bold;
 	color: red;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 }
 
 #domainheader {

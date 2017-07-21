@@ -37,7 +37,11 @@
 	        <button class="btn btn-primary" id="login" type="submit">Proceed to Login</button>
 	    </form>
     </div>
-
+	
+	<div id="space"></div>
+    <footer class="footer">
+	   <p id="copyright">&copy; 2017 Singapore Polytechnic (DISM/FT/3A/62)</p>
+	</footer>
 			
     <!-- Bootstrap core JavaScript
     ================================================== -->

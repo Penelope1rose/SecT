@@ -30,7 +30,7 @@
   </head>
 
   <body>
-  <%
+ <%
 	ArrayList<LecturerInfoDetails> retrieveLecturerInfo = (ArrayList<LecturerInfoDetails>)session.getAttribute("lecturer");
 
 	if (retrieveLecturerInfo != null) {
@@ -39,7 +39,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
+          <a class="navbar-brand" id="homenav" href="RetrieveAssessmentInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -60,75 +60,96 @@
 		}
 	}
     %>
-      	<h2 id="allassheader">All Assessments</h2>
-          	<%
-          	ArrayList<AssessmentInfoDetails> retrieveAllAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessments");
+	<%
+          	ArrayList<AssessmentInfoDetails> retrieveAllAssessmentInfo = (ArrayList<AssessmentInfoDetails>)session.getAttribute("assessment");
 
 			if (retrieveAllAssessmentInfo != null) {
 				for(AssessmentInfoDetails assessment:retrieveAllAssessmentInfo) {
-					String datetime = assessment.getDatetime().replace(".0", "");
 		%>
-        <div class="main">
-          <h3 class="page-header"><%=assessment.getAssessmentName()%>
-              <form action="ClearDatabaseInformationServlet" method="post" onsubmit="return confirmClear()">
-		      <input type="hidden" name="assessmentID" value="<%=assessment.getId()%>">
-		      <input type="hidden" name="staffID" value="<%=assessment.getLecturerID()%>">
-		      <button class="btn btn-default" id="clear">
-					<span class="glyphicon glyphicon-remove-circle" id="deletebox" aria-hidden="true"> Clear database information</span>
-			  </button>
-			  </form>
-			  <form action="RetrieveStudentInfoServlet" method="post">
-		      <input type="hidden" name="assessmentID" value="<%=assessment.getId()%>">
-		      <button class="btn btn-default" id="view">
-					<span class="glyphicon glyphicon-eye-open" id="viewbox" aria-hidden="true"> Students</span>
-			  </button>
-			  </form>
-		</h3>
+      	<h2 id="studentsheader"><%=assessment.getAssessmentName()%></h2>
+            <%
+				}
+			}
+            %>            
+       <div class="main">
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Module Code</th>
-                  <th>Module Name</th>
-                  <th>Assessment Name</th>
-                  <th>Time Limit (minutes)</th>
-                  <th>Date and Time</th>
-                  <th>Code</th>
+                  <th>Admission Number</th>
+                  <th>IP Address</th>
+                  <th>Port Number</th>
+                  <th>Last Updated Time</th>
+                  <th>Unique Code</th>
+                  <th>Cheating</th>
+                  <th>Disconnected</th>
+                  <th>Screen Capture & Keylog</th>
+                  <th>File Name</th>
+                  <th>Version</th>
                 </tr>
               </thead>
+         <%
+          	ArrayList<StudentInfoDetails> retrieveStudentInfo = (ArrayList<StudentInfoDetails>)session.getAttribute("student");
+
+			if (retrieveStudentInfo != null) {
+				for(StudentInfoDetails student:retrieveStudentInfo) {
+		%>
               <tbody>
                 <tr>
-                  <td><%=assessment.getModuleCode()%></td>
-                  <td><%=assessment.getModuleName()%></td>
-                  <td><%=assessment.getAssessmentName()%></td>
-                  <td><%=assessment.getPeriod()%></td>
+                  <td><%=student.getAdminNo()%></td>
+                  <td><%=student.getIpAddr()%></td>
+                  <td><%=student.getPortNo()%></td>
+                  <td><%=student.getTimestamp()%></td>
+                  <td><%=student.getUniqueCode()%></td>
                   <%
-                  	out.print("<td>" + datetime + "</td>");
+                  if (student.getCheating() == 0) {
+                	  out.print("<td>No</td>");
+                  }
+                  else {
+                  	out.print("<td>Yes</td>");
+                  }
+                  if (student.getDisconnected() == 0) {
+                	  out.print("<td>No</td>");
+                  }
+                  else {
+                	  out.print("<td>Yes</td>");
+                  }
+                  if (student.getSskl() == 0) {
+                	  out.print("<td>No</td>");
+                  }
+                  else {
+                	  out.print("<td>Yes</td>");
+                  }
                   %>
-                  <td><%=assessment.getExamCode()%></td>
+                  
+        <%
+          	ArrayList<StudentSubmissionInfoDetails> retrieveStudentSubmissionInfo = (ArrayList<StudentSubmissionInfoDetails>)session.getAttribute("studentsub");
+
+			if (retrieveStudentSubmissionInfo != null) {
+				for(StudentSubmissionInfoDetails studentsub:retrieveStudentSubmissionInfo) {
+					if (studentsub.getAdminNo().equals(student.getAdminNo())) {
+		%>
+                  <td><%=studentsub.getFileName()%></td>
+                  <td><%=studentsub.getVersion()%></td>
                 </tr>
               </tbody>
-            </table>
-          </div>
-        </div>
-                <%
-				}
+
+        <%
+					}
+			   	}
 			}
-            %>
+        %>
+                <%
+			}
+		}
+        %>
+        		</table>
+         	</div>
+        </div>
     <div id="space"></div>
     <footer class="footer">
 	   <p id="copyright">&copy; 2017 Singapore Polytechnic (DISM/FT/3A/62)</p>
 	</footer>
-	
-	<script type="text/javascript">
-	function confirmClear() {
-		var result = confirm("Are you sure you want to clear all database information related to this assessment? \nThe database information includes assessment, announcements, students, whitelist domains and student submissions!");
-		if (result) {
-			return true;
-		}
-		return false;
-	}    
-	</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

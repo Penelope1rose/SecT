@@ -98,4 +98,22 @@ public class AnnouncementInfoManager{
 		}
 	}
 	
+	public static void clearAnnouncementInfo(int assessmentID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "DELETE FROM T_ANNOUNCEMENT WHERE C_ASSESSMENT_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, assessmentID);
+			
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 }

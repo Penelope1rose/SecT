@@ -36,7 +36,7 @@ public class UpdateAssessmentInfoServlet extends HttpServlet {
 
 		db.updateAssessmentInfo(hiddenID);
 
-		response.sendRedirect("DeleteAllStudentInfoServlet?assessmentId="+hiddenID+"&staffID="+staffID);
+		response.sendRedirect("RetrieveAssessmentInfoServlet?staffID="+staffID);
 	}
 
 	/**

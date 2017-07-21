@@ -29,12 +29,12 @@ public class StudentInfoManager{
 				String port = rs.getString("C_PORT");
 				String timestamp = rs.getString("C_TIMESTAMP");
 				String uniqueCode = rs.getString("C_UNIQUE_CODE");
-				int submitDisable = rs.getInt("C_SUBMIT_DISABLE");
 				int cheating = rs.getInt("C_CHEATING");
 				int disconnected = rs.getInt("C_DISCONNECTED");
 				int sskl = rs.getInt("C_SS_KL");
+				int login = rs.getInt("C_LOGIN");
 
-				StudentInfoDetails sid = new StudentInfoDetails(id, adminNo, ip, port, timestamp, uniqueCode, submitDisable, cheating, disconnected, sskl);
+				StudentInfoDetails sid = new StudentInfoDetails(id, adminNo, ip, port, timestamp, uniqueCode, cheating, disconnected, sskl, login);
 				StudentInfo.add(sid);
 			}
 			conn.close();
@@ -100,14 +100,14 @@ public class StudentInfoManager{
 		}
 	}
 	
-	public static void deleteAllStudentInfo(int assessmentId) {
+	public static void clearStudentInfo(int assessmentID) {
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
 			String sql = "DELETE FROM T_STUDENT_INFO WHERE C_ASSESSMENT_ID=?";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, assessmentId);
+			pstmt.setInt(1, assessmentID);
 			
 			pstmt.executeUpdate();
 			

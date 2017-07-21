@@ -76,4 +76,22 @@ public class DomainInfoManager {
 			System.out.println(e);
 		}
 	}
+	
+	public static void clearDomainInfo(int assessmentID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "DELETE FROM T_WHITELIST_DOMAIN WHERE C_ASSESSMENT_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, assessmentID);
+			
+			pstmt.executeUpdate();
+
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 }
