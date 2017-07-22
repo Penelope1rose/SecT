@@ -76,7 +76,7 @@ if (retrieveStudentInfo != null) {
 		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds%>
 		<%
 		if (diffsecs <= 8 && diffsecs >= 0 && student.getDisconnected() == 0) { %>
-			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
 				<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
 				<p id="subip<%=student.getId()%>" class="subip"></p>
 			</li>
@@ -120,7 +120,7 @@ if (retrieveStudentInfo != null) {
 		<%
 		}
 		else if (student.getCheating() == 1) { %>
-			<li id="compimg"><img src="images/L1.png" id="cheating" alt="Cheating" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+			<li id="compimg"><img src="images/L1.png" id="cheating" alt="Cheating" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
 				<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
 				<p id="subip<%=student.getId()%>" class="subip"></p>
 			</li>
@@ -145,7 +145,7 @@ if (retrieveStudentInfo != null) {
 				<button class="btn btn-link" id="removecomp"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 			</form>
 			
-			<img src="images/L2.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+			<img src="images/L2.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
 			<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
 			<p id="subip<%=student.getId()%>" class="subip"></p>
 			</li>

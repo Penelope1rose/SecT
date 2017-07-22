@@ -25,6 +25,7 @@ public class StudentInfoManager{
 			while (rs.next()) {
 				int id = rs.getInt("C_ID");
 				String adminNo = rs.getString("C_ADMISSION_NO");
+				int tableNo = rs.getInt("C_TABLE_NO");
 				String ip = rs.getString("C_IP");
 				String port = rs.getString("C_PORT");
 				String timestamp = rs.getString("C_TIMESTAMP");
@@ -34,7 +35,7 @@ public class StudentInfoManager{
 				int sskl = rs.getInt("C_SS_KL");
 				int login = rs.getInt("C_LOGIN");
 
-				StudentInfoDetails sid = new StudentInfoDetails(id, adminNo, ip, port, timestamp, uniqueCode, cheating, disconnected, sskl, login);
+				StudentInfoDetails sid = new StudentInfoDetails(id, adminNo, tableNo, ip, port, timestamp, uniqueCode, cheating, disconnected, sskl, login);
 				StudentInfo.add(sid);
 			}
 			conn.close();
