@@ -58,7 +58,7 @@ if (retrieveStartAssessmentInfo != null) {
 	
  	<script type="text/javascript">
 	setTimeout(function(){
-		   window.location="RetrieveStudentInfoServlet?examCode=<%=assessment.getExamCode()%>";
+		   window.location="RetrieveStartAssessmentInfoServlet?hiddenID=<%=assessment.getId()%>&examCode=<%=assessment.getExamCode()%>";
 		}, 12000);
 	</script>
 <div id="allcomp">
