@@ -89,7 +89,7 @@
 				}
     	%>
     	</ol>
-    	<form onsubmit="return checkvalue()" action="InsertDomainInfoServlet" id="domainform">
+    	<form action="InsertDomainInfoServlet" id="domainform">
     	<input type="hidden" name="staffID" value="<%=lecturer.getStaffNumber()%>">
     	<input type="hidden" name="assessmentId" value="<%=assessment.getId()%>">
 	        Add Domains: <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Domains that students are allowed to access (must start with www.)"></span>
@@ -119,17 +119,6 @@
            }
         });
      });
-    
-    function checkvalue() { 
-		var domain = document.getElementById('domain').value;
-		var start = /^www./;
-
-		if (!start.test(domain)) {
-			alert ('The domain must start with www.');
-			return false;
-		}
-		return true;
-	}
 	</script>
 
 
