@@ -34,8 +34,10 @@ public class StudentInfoManager{
 				int disconnected = rs.getInt("C_DISCONNECTED");
 				int sskl = rs.getInt("C_SS_KL");
 				int login = rs.getInt("C_LOGIN");
+				String fileName = rs.getString("C_FILE_NAME");
+				int version = rs.getInt("C_VERSION");
 
-				StudentInfoDetails sid = new StudentInfoDetails(id, adminNo, tableNo, ip, port, timestamp, uniqueCode, cheating, disconnected, sskl, login);
+				StudentInfoDetails sid = new StudentInfoDetails(id, adminNo, tableNo, ip, port, timestamp, uniqueCode, cheating, disconnected, sskl, login, fileName, version);
 				StudentInfo.add(sid);
 			}
 			conn.close();
@@ -88,6 +90,24 @@ public class StudentInfoManager{
 			Connection conn = DBConnection.getConnection();
 			
 			String sql = "UPDATE T_STUDENT_INFO SET C_SS_KL=0 WHERE C_ID=?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, hiddenID);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	public static void updateCheatStudentInfo(String hiddenID) {
+		try {	
+			Connection conn = DBConnection.getConnection();
+			
+			String sql = "UPDATE T_STUDENT_INFO SET C_CHEATING=0 WHERE C_ID=?";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, hiddenID);

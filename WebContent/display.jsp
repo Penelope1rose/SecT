@@ -75,6 +75,7 @@ if (retrieveStudentInfo != null) {
 		long diff = currentTime.getTime()-timestamps.getTime(); //difference in time in milliseconds
 		long diffsecs = TimeUnit.MILLISECONDS.toSeconds(diff); //convert to seconds%>
 		<%
+		//Correct
 		if (diffsecs <= 8 && diffsecs >= 0 && student.getDisconnected() == 0) { %>
 			<li id="compimg"><img src="images/L3.png" id="connected" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
 				<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
@@ -119,33 +120,15 @@ if (retrieveStudentInfo != null) {
 			</script>
 		<%
 		}
-		else if (student.getCheating() == 1) { %>
-			<li id="compimg"><img src="images/L1.png" id="cheating" alt="Cheating" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
-				<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
-				<p id="subip<%=student.getId()%>" class="subip"></p>
-			</li>
-			<script type="text/javascript">
-				var ip = $("#ipaddress<%=student.getId()%>").html();
-				var subip = ip.substring(12);
-				$("#subip<%=student.getId()%>").append(subip);
-			</script>
-			<%
-			if (showAlert == true) { %>
-			<script type="text/javascript">
-				alert ("1 or more student(s) is/are CHEATING!");
-			</script>
-			<%
-				showAlert = false;
-			}
-		}
-		else { %>
+		//Disconnected
+		else if (student.getDisconnected() == 1) { %>
 			<li id="compimg">
 			<form action="DeleteStudentInfoServlet" onsubmit="return confirmDelete()">
 				<input type="hidden" name="hiddenID" value="<%=student.getId()%>">
 				<button class="btn btn-link" id="removecomp"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 			</form>
 			
-			<img src="images/L2.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+			<img src="images/L1.png" id="disconnected" alt="Disconnected" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
 			<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
 			<p id="subip<%=student.getId()%>" class="subip"></p>
 			</li>
@@ -155,9 +138,39 @@ if (retrieveStudentInfo != null) {
 				$("#subip<%=student.getId()%>").append(subip);
 			</script>
 		<%
+		}
+		//Cheating
+		else { %>
+			<li id="compimg"><img src="images/L2.png" id="cheating" alt="Cheating" data-toggle="tooltip" data-placement="top" data-html="true" title="Admission Number: <%=student.getAdminNo()%><br>Table Number: <%=student.getTableNo()%><br>IP address: <%=student.getIpAddr()%><br>Port Number: <%=student.getPortNo()%><br>Timestamp: <%=student.getTimestamp()%>">
+				<p id="ipaddress<%=student.getId()%>" class="ipaddress"><%=student.getIpAddr()%></p>
+				<p id="subip<%=student.getId()%>" class="subip"></p>
+			</li>
+			
+			<button id="stopsskl<%=student.getId()%>" class="btn stopssklcheat" onclick="stopredirect(<%=student.getId()%>)" title="Stop screen capture and keylogger" disabled>Stop</button>
+			
+			<script type="text/javascript">
+			$(document).ready(function(){
+				if (<%=student.getSskl()%> == 1 && <%=student.getCheating()%> == 1) {
+				    $('#stopsskl<%=student.getId()%>').prop('disabled', false);
+				}
+				else {
+					$('#stopsskl<%=student.getId()%>').prop('disabled', true);
+				}
+
+			});
+			
+			function stopredirect(id) {
+				window.location="UpdateStopCheatSSKLStudentInfoServlet?hiddenID="+id;
+			}
+			
+			var ip = $("#ipaddress<%=student.getId()%>").html();
+			var subip = ip.substring(12);
+			$("#subip<%=student.getId()%>").append(subip);
+			</script>
+			<%
 			if (showAlert == true) { %>
 			<script type="text/javascript">
-				alert ("1 or more student(s) has/have DISCONNECTED!");
+				alert ("1 or more student(s) is/are CHEATING!");
 			</script>
 			<%
 				showAlert = false;

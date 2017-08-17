@@ -215,6 +215,15 @@ html {
 	float: right;
 }
 
+#finish {
+	width: 30%;
+    margin-top: 50px;
+}
+
+#finishbutton {
+	width: 30%;
+}
+
 .announcement {
 	font-family: Palatino;
   	padding: 10px 15px 0px;
@@ -319,7 +328,10 @@ html {
 }
 
 #domainform {
-	padding-top: 50px;
+	background-color: lightgray;
+    padding: 20px;
+    padding-bottom: 50px;
+    margin-top: 50px;
 }
 
 #green, #red {

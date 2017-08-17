@@ -39,7 +39,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
+          <a class="navbar-brand" id="homenav" href="RetrieveAssessmentInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -122,7 +122,7 @@
 	
 	<script type="text/javascript">
 	function confirmClear() {
-		var result = confirm("Are you sure you want to clear all database information related to this assessment? \nThe database information includes assessment, announcements, students, whitelist domains and student submissions!");
+		var result = confirm("Are you sure you want to clear all database information related to this assessment? \nThe database information includes the assessment, announcements, students and whitelist domains!");
 		if (result) {
 			return true;
 		}

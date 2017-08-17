@@ -16,8 +16,6 @@ import model.AssessmentInfoDetails;
 import model.AssessmentInfoManager;
 import model.StudentInfoDetails;
 import model.StudentInfoManager;
-import model.StudentSubmissionInfoDetails;
-import model.StudentSubmissionInfoManager;
 
 /**
  * Servlet implementation class RetrieveStudentInfoServlet
@@ -60,17 +58,14 @@ public class RetrieveStudentInfoServlet extends HttpServlet {
 		int assessmentID = Integer.parseInt(request.getParameter("assessmentID"));
 		
 		StudentInfoManager db = new StudentInfoManager();
-		StudentSubmissionInfoManager db2 = new StudentSubmissionInfoManager();
 		AssessmentInfoManager db3 = new AssessmentInfoManager();
 
 		ArrayList<StudentInfoDetails> student = db.retrieveStudentInfo(assessmentID);
-		ArrayList<StudentSubmissionInfoDetails> studentsub = db2.retrieveStudentSubmissionInfo(assessmentID);
 		ArrayList<AssessmentInfoDetails> assessment = db3.retrieveAssessmentInfo(assessmentID);
 		
 		HttpSession session = request.getSession();
 		
 		session.setAttribute("assessment", assessment);
-		session.setAttribute("studentsub", studentsub);
 		session.setAttribute("student", student);
 		response.sendRedirect("student.jsp");
 	}

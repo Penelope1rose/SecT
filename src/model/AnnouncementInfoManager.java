@@ -13,7 +13,7 @@ public class AnnouncementInfoManager{
 		try {	
 			Connection conn = DBConnection.getConnection();
 			
-			String sql = "SELECT * FROM T_ANNOUNCEMENT WHERE C_LECTURER_ID=? ORDER BY C_MODULE_CODE, C_TIMESTAMP DESC";
+			String sql = "SELECT * FROM T_ANNOUNCEMENT WHERE C_LECTURER_ID=? ORDER BY C_TIMESTAMP DESC";
 			
 			ArrayList<AnnouncementInfoDetails> Announcement = new ArrayList<AnnouncementInfoDetails>();
 

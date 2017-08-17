@@ -7,22 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AnnouncementInfoManager;
-import model.AssessmentInfoManager;
-import model.DomainInfoManager;
 import model.StudentInfoManager;
 
 /**
- * Servlet implementation class ClearDatabaseInformationServlet
+ * Servlet implementation class UpdateStopCheatSSKLStudentInfoServlet
  */
-@WebServlet("/ClearDatabaseInformationServlet")
-public class ClearDatabaseInformationServlet extends HttpServlet {
+@WebServlet("/UpdateStopCheatSSKLStudentInfoServlet")
+public class UpdateStopCheatSSKLStudentInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClearDatabaseInformationServlet() {
+    public UpdateStopCheatSSKLStudentInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +29,14 @@ public class ClearDatabaseInformationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String hiddenID = request.getParameter("hiddenID");
+		
+		StudentInfoManager db = new StudentInfoManager();
+
+		db.updateStopSSKLStudentInfo(hiddenID);
+		db.updateCheatStudentInfo(hiddenID);
+
+		response.sendRedirect("display.jsp");
 	}
 
 	/**
@@ -39,20 +44,6 @@ public class ClearDatabaseInformationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int assessmentID = Integer.parseInt(request.getParameter("assessmentID"));
-		String staffID = request.getParameter("staffID");
-		
-		AssessmentInfoManager db = new AssessmentInfoManager();
-		AnnouncementInfoManager db2 = new AnnouncementInfoManager();
-		StudentInfoManager db3 = new StudentInfoManager();
-		DomainInfoManager db4 = new DomainInfoManager();
-
-		db.deleteAssessmentInfo(assessmentID);
-		db2.clearAnnouncementInfo(assessmentID);
-		db3.clearStudentInfo(assessmentID);
-		db4.clearDomainInfo(assessmentID);
-			
-		response.sendRedirect("RetrieveAllAssessmentInfoServlet?staffID="+staffID);
 	}
 
 }

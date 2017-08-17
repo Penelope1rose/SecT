@@ -80,10 +80,6 @@
                   <th>IP Address</th>
                   <th>Port Number</th>
                   <th>Last Updated Time</th>
-                  <th>Unique Code</th>
-                  <th>Cheating</th>
-                  <th>Disconnected</th>
-                  <th>Screen Capture & Keylog</th>
                   <th>File Name</th>
                   <th>Version</th>
                 </tr>
@@ -100,48 +96,14 @@
                   <td><%=student.getIpAddr()%></td>
                   <td><%=student.getPortNo()%></td>
                   <td><%=student.getTimestamp()%></td>
-                  <td><%=student.getUniqueCode()%></td>
-                  <%
-                  if (student.getCheating() == 0) {
-                	  out.print("<td>No</td>");
-                  }
-                  else {
-                  	out.print("<td>Yes</td>");
-                  }
-                  if (student.getDisconnected() == 0) {
-                	  out.print("<td>No</td>");
-                  }
-                  else {
-                	  out.print("<td>Yes</td>");
-                  }
-                  if (student.getSskl() == 0) {
-                	  out.print("<td>No</td>");
-                  }
-                  else {
-                	  out.print("<td>Yes</td>");
-                  }
-                  %>
-                  
-        <%
-          	ArrayList<StudentSubmissionInfoDetails> retrieveStudentSubmissionInfo = (ArrayList<StudentSubmissionInfoDetails>)session.getAttribute("studentsub");
-
-			if (retrieveStudentSubmissionInfo != null) {
-				for(StudentSubmissionInfoDetails studentsub:retrieveStudentSubmissionInfo) {
-					if (studentsub.getAdminNo().equals(student.getAdminNo())) {
-		%>
-                  <td><%=studentsub.getFileName()%></td>
-                  <td><%=studentsub.getVersion()%></td>
+                  <td><%=student.getFileName()%></td>
+                  <td><%=student.getVersion()%></td>
                 </tr>
               </tbody>
 
         <%
-					}
 			   	}
 			}
-        %>
-                <%
-			}
-		}
         %>
         		</table>
          	</div>

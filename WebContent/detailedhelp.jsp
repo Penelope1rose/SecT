@@ -36,7 +36,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
+          <a class="navbar-brand" id="homenav" href="RetrieveAssessmentInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -73,12 +73,12 @@
 				<p id="greentext">A green laptop means that the student is connected and nothing is wrong. From here, you can start and stop screen capture and keylogging.</p>
 			</div>
 			<div id="blue">
-				<img src="images/L1.png" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true">
-				<p id="bluetext">A blue laptop means that the student is connected but <b>CHEATING</b>.</p>
+				<img src="images/L2.png" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true">
+				<p id="bluetext">A red laptop means that the student is connected but <b>CHEATING</b>.</p>
 			</div>
 			<div id="red">
-				<img src="images/L2.png" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true">
-				<p id="redtext">A red laptop means that the student is <b>DISCONNECTED</b>. From here, you can remove the laptop if it is not needed anymore.</p>
+				<img src="images/L1.png" alt="Connected" data-toggle="tooltip" data-placement="top" data-html="true">
+				<p id="redtext">A grey laptop means that the student is <b>DISCONNECTED</b>. From here, you can remove the laptop if it is not needed anymore.</p>
 			</div>
 			<p id="imptmessage">**Important**<br>
 				After the assessment has ended, end the assessment properly by clicking the 'End Assessment' button.

@@ -40,7 +40,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
+          <a class="navbar-brand" id="homenav" href="RetrieveAssessmentInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -96,15 +96,18 @@
             <input type="text" id="domain" name="domain" data-role="tagsinput" placeholder="Enter to confirm the domain " required autofocus><br><br>
 	        <button class="btn btn-primary" id="adddomain" type="submit">Done</button>
 		</form>
-          </div>
+		</div>
         </div>
-      </div>
-                  <%
+                          <%
 					}
 				}
 		}
 	}
     %>
+	        <form action="assessmentinfo.jsp" class="navbar-form navbar-right" id="finishbutton">
+	        	<button class="btn btn-default" id="finish">Finish</button>
+			</form>
+      </div>
     
     <div id="space"></div>
     <footer class="footer">

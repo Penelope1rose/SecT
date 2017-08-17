@@ -33,7 +33,7 @@
 	    <%
 	    if(session.getAttribute("LECTURER_ID")=="DUPLICATE"){ %>
 		<script type="text/javascript">
-        	alert('Admission number has been used!');
+        	alert('Staff number has been used!');
     	</script>
     	<%
 	    }

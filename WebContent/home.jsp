@@ -38,7 +38,7 @@
 			//When lecturer click the refresh button in browser, it goes through the servlet
 			if(session.getAttribute("REFRESH")!= null){ %>
 				<script type="text/javascript">
-	            	window.location.href = "RetrieveAllAnnouncementInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"
+	            	window.location.href = "RetrieveAssessmentInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"
 	        	</script>
 	        <%
 			}
@@ -49,7 +49,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" id="homenav" href="home.jsp"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
+          <a class="navbar-brand" id="homenav" href="RetrieveAssessmentInfoServlet?staffID=<%=lecturer.getStaffNumber()%>"><img src="images/logo.png" alt="Secured-T logo" id="logo">Secured-T</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -150,7 +150,7 @@
 		  ArrayList<AnnouncementInfoDetails> retrieveAnnouncement = (ArrayList<AnnouncementInfoDetails>)session.getAttribute("announcement");
           if (retrieveAnnouncement != null) {  		
           for(AnnouncementInfoDetails announcement:retrieveAnnouncement) {
-						SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+						SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 			  		%>
 					<p id="individual_announcement">
 						<h3>Module Code: <%=announcement.getModuleCode()%></h3>

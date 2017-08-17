@@ -154,6 +154,14 @@ body {
     padding: 0;
 }
 
+.stopssklcheat {
+	position: absolute;
+    margin-top: 50px;
+    margin-left: -125px;
+    font-size: 10px;
+    padding: 0;
+}
+
 .monitoring {
 	padding-top: 0;
 }
